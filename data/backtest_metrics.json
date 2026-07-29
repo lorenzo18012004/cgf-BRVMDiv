@@ -1,0 +1,45 @@
+{
+  "start_label": "",
+  "end_label": "",
+  "n_years": 3.0,
+  "n_rebal": 4,
+  "mgmt_fee_ann": 0.006,
+  "te_full": 0.0,
+  "te_p1": 0.0,
+  "te_p2": 0.0,
+  "te_prog": [
+    [
+      null,
+      0.0
+    ]
+  ],
+  "td_full": 0.0,
+  "td_full_ann": 0.0,
+  "mgmt_fee_cumul": -0.01789626143703127,
+  "cost_tx_cumul": 0.0,
+  "basket_gap_cumul": 0.0,
+  "td_structural_cumul": -0.01789626143703127,
+  "td_structural_ann": -0.005964059753536196,
+  "cost_tx_ann": 0.0,
+  "turnover_avg": 0.0,
+  "n_titres_avg": 29.8,
+  "n_titres_min": 29,
+  "n_titres_max": 30,
+  "annual": {},
+  "td_gross": 0.0,
+  "td_gross_ann": 0.0,
+  "selection_params": {
+    "cap_snts": 0.35,
+    "min_dividende_w": 0.005
+  },
+  "td_prog": [
+    [
+      null,
+      0.0
+    ]
+  ],
+  "exec_days_by_rebal": {},
+  "te_t3": 0.0,
+  "td_t3": 0.0,
+  "td_ann_t3": 0.0
+}

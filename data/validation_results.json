@@ -1,0 +1,12 @@
+{
+  "etf": "CGF ETF Dividende BRVM",
+  "date": "2026-07-29",
+  "nav_series_ok": true,
+  "n_points": 796,
+  "perf_total_pct": 168.79,
+  "perf_ann_pct": 38.01,
+  "vol_ann_pct": 9.2,
+  "max_drawdown_pct": -11.5,
+  "sharpe": 4.13,
+  "status": "OK"
+}
