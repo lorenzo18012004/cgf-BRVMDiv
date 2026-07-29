@@ -1,15 +1,20 @@
 {
   "etf_name": "CGF ETF Dividende BRVM",
-  "calc_date": null,
-  "launched": false,
-  "nav_indice": 267.1757,
-  "vl_par_part_fcfa": 100000,
-  "aum_mfcfa": 2500.0,
+  "calc_date": "2026-07-29",
+  "launched": true,
+  "nav_indice": 267.1688,
+  "vl_par_part_fcfa": 99915.0,
+  "aum_mfcfa": 2497.9,
   "n_parts": 25000,
-  "perf_since_launch": 0.0,
-  "change_day_pct": null,
+  "perf_since_launch": -0.085,
+  "change_day_pct": -0.0002,
   "last_rebal_date": "2026-07-29",
-  "nav_live_series": [],
+  "nav_live_series": [
+    [
+      "2026-07-29",
+      99915.0
+    ]
+  ],
   "nav_series": [
     [
       "2023-07-03",
@@ -3212,7 +3217,11 @@
       "adv_mfcfa": 34.45,
       "dernier_prix": 7145.0,
       "prix_rebal": 5900.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 171.1,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "BOAC",
@@ -3222,7 +3231,11 @@
       "adv_mfcfa": 107.31,
       "dernier_prix": 10895.0,
       "prix_rebal": 9395.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 155.2,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "BOAN",
@@ -3232,7 +3245,11 @@
       "adv_mfcfa": 49.15,
       "dernier_prix": 5400.0,
       "prix_rebal": 4190.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 148.6,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "BOAB",
@@ -3242,7 +3259,11 @@
       "adv_mfcfa": 48.11,
       "dernier_prix": 8520.0,
       "prix_rebal": 9025.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 132.2,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "FTSC",
@@ -3252,7 +3273,11 @@
       "adv_mfcfa": 11.82,
       "dernier_prix": 1950.0,
       "prix_rebal": 2000.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 123.4,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SIBC",
@@ -3262,7 +3287,11 @@
       "adv_mfcfa": 100.05,
       "dernier_prix": 9100.0,
       "prix_rebal": 9015.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 115.3,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "BOAM",
@@ -3272,7 +3301,11 @@
       "adv_mfcfa": 37.05,
       "dernier_prix": 5630.0,
       "prix_rebal": 4970.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 102.1,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "BOAS",
@@ -3282,7 +3315,11 @@
       "adv_mfcfa": 78.62,
       "dernier_prix": 7945.0,
       "prix_rebal": 7440.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 91.4,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "PALC",
@@ -3292,7 +3329,11 @@
       "adv_mfcfa": 35.96,
       "dernier_prix": 8800.0,
       "prix_rebal": 8730.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 79.0,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "ONTBF",
@@ -3302,7 +3343,11 @@
       "adv_mfcfa": 19.05,
       "dernier_prix": 2795.0,
       "prix_rebal": 2800.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 77.8,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "STBC",
@@ -3312,7 +3357,11 @@
       "adv_mfcfa": 100.02,
       "dernier_prix": 23000.0,
       "prix_rebal": 24450.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 77.5,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SOGC",
@@ -3322,7 +3371,11 @@
       "adv_mfcfa": 29.87,
       "dernier_prix": 8380.0,
       "prix_rebal": 8395.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 74.3,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "NSBC",
@@ -3332,7 +3385,11 @@
       "adv_mfcfa": 32.0,
       "dernier_prix": 23390.0,
       "prix_rebal": 19995.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 72.2,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "ECOC",
@@ -3342,7 +3399,11 @@
       "adv_mfcfa": 93.12,
       "dernier_prix": 16245.0,
       "prix_rebal": 16250.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 72.2,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SNTS",
@@ -3352,7 +3413,11 @@
       "adv_mfcfa": 239.65,
       "dernier_prix": 31005.0,
       "prix_rebal": 29300.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 71.2,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "NTLC",
@@ -3362,7 +3427,11 @@
       "adv_mfcfa": 18.31,
       "dernier_prix": 16550.0,
       "prix_rebal": 15990.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 69.9,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "TTLS",
@@ -3372,7 +3441,11 @@
       "adv_mfcfa": 13.19,
       "dernier_prix": 3650.0,
       "prix_rebal": 4000.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 66.6,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "CIEC",
@@ -3382,7 +3455,11 @@
       "adv_mfcfa": 29.04,
       "dernier_prix": 5375.0,
       "prix_rebal": 5300.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 66.4,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "TTLC",
@@ -3392,7 +3469,11 @@
       "adv_mfcfa": 22.83,
       "dernier_prix": 3000.0,
       "prix_rebal": 2950.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 66.1,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SDCC",
@@ -3402,7 +3483,11 @@
       "adv_mfcfa": 15.47,
       "dernier_prix": 11930.0,
       "prix_rebal": 12100.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 65.6,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "NEIC",
@@ -3412,7 +3497,11 @@
       "adv_mfcfa": 5.1,
       "dernier_prix": 2280.0,
       "prix_rebal": 2275.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 63.4,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "CBIBF",
@@ -3422,7 +3511,11 @@
       "adv_mfcfa": 35.26,
       "dernier_prix": 27200.0,
       "prix_rebal": 24000.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 63.2,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SGBC",
@@ -3432,7 +3525,11 @@
       "adv_mfcfa": 135.16,
       "dernier_prix": 37950.0,
       "prix_rebal": 39000.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 62.5,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "ABJC",
@@ -3442,7 +3539,11 @@
       "adv_mfcfa": 11.42,
       "dernier_prix": 3100.0,
       "prix_rebal": 3285.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 62.0,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "PRSC",
@@ -3452,7 +3553,11 @@
       "adv_mfcfa": 4.38,
       "dernier_prix": 4495.0,
       "prix_rebal": 4600.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 60.6,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "CABC",
@@ -3462,7 +3567,11 @@
       "adv_mfcfa": 7.65,
       "dernier_prix": 3700.0,
       "prix_rebal": 4190.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 60.5,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SDSC",
@@ -3472,7 +3581,11 @@
       "adv_mfcfa": 48.82,
       "dernier_prix": 2640.0,
       "prix_rebal": 2400.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 59.1,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SMBC",
@@ -3482,7 +3595,11 @@
       "adv_mfcfa": 23.86,
       "dernier_prix": 16000.0,
       "prix_rebal": 17540.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 57.5,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "ORAC",
@@ -3492,7 +3609,11 @@
       "adv_mfcfa": 57.15,
       "dernier_prix": 16725.0,
       "prix_rebal": 16700.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 56.1,
+      "prix_stale": false,
+      "force_otc": false
     },
     {
       "ticker": "SHEC",
@@ -3502,12 +3623,18 @@
       "adv_mfcfa": 8.71,
       "dernier_prix": 2150.0,
       "prix_rebal": 2190.0,
-      "capped": false
+      "capped": false,
+      "last_price_date": "2026-07-29",
+      "pv_mfcfa": 54.9,
+      "prix_stale": false,
+      "force_otc": false
     }
   ],
   "n_basket": 30,
   "methodology": "price_return",
   "rebal_frequency": "annual_july",
   "yield_cap_pct": 20.0,
-  "min_years_dividend": 2
+  "min_years_dividend": 2,
+  "source": "cloud_fallback_sika",
+  "n_live_prices": 30
 }
