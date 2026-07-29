@@ -4,7 +4,6 @@
     {
       "time": "11:12",
       "nav_indice": 267.396,
-      "halal_official": 267.396,
       "vl_par_part": 100000.0,
       "vl_live_fcfa": 100000.0,
       "perf_since_launch": -0.0,
@@ -315,12 +314,13 @@
           "contrib_pct": 0.0,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.396,
+      "brvm30_star": 267.396
     },
     {
       "time": "11:18",
       "nav_indice": 267.3891,
-      "halal_official": 267.3891,
       "vl_par_part": 99997.0,
       "vl_live_fcfa": 99997.0,
       "perf_since_launch": -0.0026,
@@ -631,12 +631,13 @@
           "contrib_pct": 0.0,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.3891,
+      "brvm30_star": 267.3891
     },
     {
       "time": "11:23",
       "nav_indice": 267.1442,
-      "halal_official": 267.1442,
       "vl_par_part": 99906.0,
       "vl_live_fcfa": 99906.0,
       "perf_since_launch": -0.0942,
@@ -947,12 +948,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.1442,
+      "brvm30_star": 267.1442
     },
     {
       "time": "11:29",
       "nav_indice": 267.1442,
-      "halal_official": 267.1442,
       "vl_par_part": 99906.0,
       "vl_live_fcfa": 99906.0,
       "perf_since_launch": -0.0942,
@@ -1263,12 +1265,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.1442,
+      "brvm30_star": 267.1442
     },
     {
       "time": "11:35",
       "nav_indice": 267.1442,
-      "halal_official": 267.1442,
       "vl_par_part": 99906.0,
       "vl_live_fcfa": 99906.0,
       "perf_since_launch": -0.0942,
@@ -1579,12 +1582,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.1442,
+      "brvm30_star": 267.1442
     },
     {
       "time": "11:40",
       "nav_indice": 267.0121,
-      "halal_official": 267.0121,
       "vl_par_part": 99856.0,
       "vl_live_fcfa": 99856.0,
       "perf_since_launch": -0.1436,
@@ -1895,12 +1899,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.0121,
+      "brvm30_star": 267.0121
     },
     {
       "time": "11:46",
       "nav_indice": 267.0121,
-      "halal_official": 267.0121,
       "vl_par_part": 99856.0,
       "vl_live_fcfa": 99856.0,
       "perf_since_launch": -0.1436,
@@ -2211,12 +2216,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 267.0121,
+      "brvm30_star": 267.0121
     },
     {
       "time": "11:52",
       "nav_indice": 266.9017,
-      "halal_official": 266.9017,
       "vl_par_part": 99815.0,
       "vl_live_fcfa": 99815.0,
       "perf_since_launch": -0.1849,
@@ -2527,12 +2533,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9017,
+      "brvm30_star": 266.9017
     },
     {
       "time": "11:57",
       "nav_indice": 266.9017,
-      "halal_official": 266.9017,
       "vl_par_part": 99815.0,
       "vl_live_fcfa": 99815.0,
       "perf_since_launch": -0.1849,
@@ -2843,12 +2850,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9017,
+      "brvm30_star": 266.9017
     },
     {
       "time": "12:03",
       "nav_indice": 266.9017,
-      "halal_official": 266.9017,
       "vl_par_part": 99815.0,
       "vl_live_fcfa": 99815.0,
       "perf_since_launch": -0.1849,
@@ -3159,12 +3167,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9017,
+      "brvm30_star": 266.9017
     },
     {
       "time": "12:09",
       "nav_indice": 266.9017,
-      "halal_official": 266.9017,
       "vl_par_part": 99815.0,
       "vl_live_fcfa": 99815.0,
       "perf_since_launch": -0.1849,
@@ -3475,12 +3484,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9017,
+      "brvm30_star": 266.9017
     },
     {
       "time": "12:15",
       "nav_indice": 266.9017,
-      "halal_official": 266.9017,
       "vl_par_part": 99815.0,
       "vl_live_fcfa": 99815.0,
       "perf_since_launch": -0.1849,
@@ -3791,12 +3801,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9017,
+      "brvm30_star": 266.9017
     },
     {
       "time": "12:20",
       "nav_indice": 266.9017,
-      "halal_official": 266.9017,
       "vl_par_part": 99815.0,
       "vl_live_fcfa": 99815.0,
       "perf_since_launch": -0.1849,
@@ -4107,12 +4118,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9017,
+      "brvm30_star": 266.9017
     },
     {
       "time": "12:26",
       "nav_indice": 266.5248,
-      "halal_official": 266.5248,
       "vl_par_part": 99674.0,
       "vl_live_fcfa": 99674.0,
       "perf_since_launch": -0.3258,
@@ -4423,12 +4435,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.5248,
+      "brvm30_star": 266.5248
     },
     {
       "time": "12:32",
       "nav_indice": 266.5248,
-      "halal_official": 266.5248,
       "vl_par_part": 99674.0,
       "vl_live_fcfa": 99674.0,
       "perf_since_launch": -0.3258,
@@ -4739,12 +4752,13 @@
           "contrib_pct": 0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.5248,
+      "brvm30_star": 266.5248
     },
     {
       "time": "12:38",
       "nav_indice": 266.0666,
-      "halal_official": 266.0666,
       "vl_par_part": 99503.0,
       "vl_live_fcfa": 99503.0,
       "perf_since_launch": -0.4972,
@@ -5055,12 +5069,13 @@
           "contrib_pct": 0.0,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0666,
+      "brvm30_star": 266.0666
     },
     {
       "time": "12:43",
       "nav_indice": 266.0666,
-      "halal_official": 266.0666,
       "vl_par_part": 99503.0,
       "vl_live_fcfa": 99503.0,
       "perf_since_launch": -0.4972,
@@ -5371,12 +5386,13 @@
           "contrib_pct": 0.0,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0666,
+      "brvm30_star": 266.0666
     },
     {
       "time": "12:49",
       "nav_indice": 266.0666,
-      "halal_official": 266.0666,
       "vl_par_part": 99503.0,
       "vl_live_fcfa": 99503.0,
       "perf_since_launch": -0.4972,
@@ -5687,12 +5703,13 @@
           "contrib_pct": 0.0,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0666,
+      "brvm30_star": 266.0666
     },
     {
       "time": "12:55",
       "nav_indice": 266.0587,
-      "halal_official": 266.0587,
       "vl_par_part": 99500.0,
       "vl_live_fcfa": 99500.0,
       "perf_since_launch": -0.5001,
@@ -6003,12 +6020,13 @@
           "contrib_pct": -0.1125,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0587,
+      "brvm30_star": 266.0587
     },
     {
       "time": "13:00",
       "nav_indice": 266.0587,
-      "halal_official": 266.0587,
       "vl_par_part": 99500.0,
       "vl_live_fcfa": 99500.0,
       "perf_since_launch": -0.5001,
@@ -6319,12 +6337,13 @@
           "contrib_pct": -0.1125,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0587,
+      "brvm30_star": 266.0587
     },
     {
       "time": "13:06",
       "nav_indice": 266.0587,
-      "halal_official": 266.0587,
       "vl_par_part": 99500.0,
       "vl_live_fcfa": 99500.0,
       "perf_since_launch": -0.5001,
@@ -6635,12 +6654,13 @@
           "contrib_pct": -0.1125,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0587,
+      "brvm30_star": 266.0587
     },
     {
       "time": "13:12",
       "nav_indice": 266.0587,
-      "halal_official": 266.0587,
       "vl_par_part": 99500.0,
       "vl_live_fcfa": 99500.0,
       "perf_since_launch": -0.5001,
@@ -6951,12 +6971,13 @@
           "contrib_pct": -0.1125,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0587,
+      "brvm30_star": 266.0587
     },
     {
       "time": "13:18",
       "nav_indice": 266.0587,
-      "halal_official": 266.0587,
       "vl_par_part": 99500.0,
       "vl_live_fcfa": 99500.0,
       "perf_since_launch": -0.5001,
@@ -7267,12 +7288,13 @@
           "contrib_pct": -0.1125,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.0587,
+      "brvm30_star": 266.0587
     },
     {
       "time": "13:23",
       "nav_indice": 266.9521,
-      "halal_official": 266.9521,
       "vl_par_part": 99834.0,
       "vl_live_fcfa": 99834.0,
       "perf_since_launch": -0.166,
@@ -7583,7 +7605,9 @@
           "contrib_pct": -0.0051,
           "gap_contrib_pct": 0.0
         }
-      }
+      },
+      "dividende_official": 266.9521,
+      "brvm30_star": 266.9521
     }
   ],
   "open_nav": 267.396
