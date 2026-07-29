@@ -1,0 +1,52 @@
+name: Rapport Mensuel
+
+on:
+  schedule:
+    # 1er de chaque mois à 17h00 UTC — génère le rapport du mois écoulé
+    - cron: '0 17 1 * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Mois à générer (YYYY-MM, vide = mois précédent)'
+        required: false
+        default: ''
+
+jobs:
+  monthly-report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements/requirements_cloud.txt
+
+      - name: Installer dependances
+        run: pip install -r requirements/requirements_cloud.txt
+
+      - name: Générer le rapport mensuel
+        run: |
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            python scripts/generate_monthly_report.py --month "${{ github.event.inputs.month }}" --force
+          else
+            # Mois précédent (le job tourne le 1er du mois courant)
+            PREV_MONTH=$(date -u -d "1 month ago" +%Y-%m)
+            python scripts/generate_monthly_report.py --month "$PREV_MONTH" --force
+          fi
+
+      - name: Commit & push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "rapport: mensuel $(date -u -d '1 month ago' +'%Y-%m')"
+          file_pattern: data/pdfs/mensuel/
+          commit_user_name: cgf-bot
+          commit_user_email: bot@cgf-bourse.ci
