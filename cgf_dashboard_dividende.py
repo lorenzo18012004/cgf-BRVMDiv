@@ -3855,10 +3855,30 @@ def _render_live():
                         "Indice Dividende (%)": w_b30,
                         "Rend. div. moy. (%)": r.get("avg_yield_pct"),
                         "_capped":             _capped_live.get(r["ticker"], False),
+                        "_excluded":           False,
                         "Clôture":             f"{int(last):,}" if last else "—",
                         "Var. J (%)":          var_j,
                         "Val. (M FCFA)":       round(r.get("pv_mfcfa") or 0, 1),
                         "Stale":               "" if r.get("prix_stale", False) else "",
+                    })
+                _etf_tickers_set = {r["ticker"] for r in rows}
+                for _e in sorted(_last_rb_live.get("excluded", []), key=lambda x: x.get("w_brvm30", 0), reverse=True):
+                    _tk = _e["ticker"]
+                    if _tk in _etf_tickers_set:
+                        continue
+                    _sika_e = sika_data.get(_tk.upper(), {}) if isinstance(sika_data.get(_tk.upper()), dict) else {}
+                    rows.append({
+                        "Ticker":              _tk,
+                        "Poids live (%)":      0.0,
+                        "Cible rebal (%)":     0.0,
+                        "Indice Dividende (%)": round(_e.get("w_brvm30", 0) * 100, 4),
+                        "Rend. div. moy. (%)": _e.get("avg_yield_pct"),
+                        "_capped":             False,
+                        "_excluded":           True,
+                        "Clôture":             f"{int(_sika_e['dernier']):,}" if _sika_e.get("dernier") else "—",
+                        "Var. J (%)":          _sika_e.get("variation"),
+                        "Val. (M FCFA)":       0.0,
+                        "Stale":               "",
                     })
 
                 df_out = pd.DataFrame(rows)
@@ -3876,6 +3896,8 @@ def _render_live():
                 def _color_drift_live(row):
                     styles = [""] * len(row)
                     cols = list(row.index)
+                    if bool(row.get("_excluded", False)):
+                        return ["background-color: #f1f5f9; color: #94a3b8"] * len(styles)
                     b30   = row.get("Indice Dividende (%)")
                     # Titre capé : lu directement depuis le basket rebal_detail
                     capped = bool(row.get("_capped", False))
@@ -3899,7 +3921,7 @@ def _render_live():
 
                 df_styled = df_out.style\
                     .apply(_color_drift_live, axis=1)\
-                    .hide(axis='columns', names=['_capped'])\
+                    .hide(axis='columns', names=['_capped', '_excluded'])\
                     .map(_color_pct, subset=["Var. J (%)"])\
                     .format({
                         "Var. J (%)":        _fmt_var,
