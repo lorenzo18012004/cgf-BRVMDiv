@@ -12,236 +12,266 @@
         {
           "ticker": "SLBC",
           "w_etf": 0.070115,
+          "w_brvm30": 0.070115,
           "avg_yield_pct": 20.0,
           "adv_mfcfa": 73.45,
           "prix_rebal": 7308.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SIBC",
           "w_etf": 0.066142,
+          "w_brvm30": 0.066142,
           "avg_yield_pct": 18.87,
           "adv_mfcfa": 100.05,
           "prix_rebal": 2550.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAB",
           "w_etf": 0.066083,
+          "w_brvm30": 0.066083,
           "avg_yield_pct": 18.85,
           "adv_mfcfa": 48.11,
           "prix_rebal": 2898.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOABF",
           "w_etf": 0.062986,
+          "w_brvm30": 0.062986,
           "avg_yield_pct": 17.97,
           "adv_mfcfa": 34.45,
           "prix_rebal": 3005.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAC",
           "w_etf": 0.056828,
+          "w_brvm30": 0.056828,
           "avg_yield_pct": 16.21,
           "adv_mfcfa": 107.31,
           "prix_rebal": 2800.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAN",
           "w_etf": 0.056629,
+          "w_brvm30": 0.056629,
           "avg_yield_pct": 16.15,
           "adv_mfcfa": 49.15,
           "prix_rebal": 3666.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAS",
           "w_etf": 0.044254,
+          "w_brvm30": 0.044254,
           "avg_yield_pct": 12.62,
           "adv_mfcfa": 78.62,
           "prix_rebal": 1859.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "FTSC",
           "w_etf": 0.038458,
+          "w_brvm30": 0.038458,
           "avg_yield_pct": 10.97,
           "adv_mfcfa": 11.82,
           "prix_rebal": 1170.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SMBC",
           "w_etf": 0.0383,
+          "w_brvm30": 0.0383,
           "avg_yield_pct": 10.93,
           "adv_mfcfa": 23.86,
           "prix_rebal": 7800.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ONTBF",
           "w_etf": 0.03743,
+          "w_brvm30": 0.03743,
           "avg_yield_pct": 10.68,
           "adv_mfcfa": 19.05,
           "prix_rebal": 2700.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NTLC",
           "w_etf": 0.0366,
+          "w_brvm30": 0.0366,
           "avg_yield_pct": 10.44,
           "adv_mfcfa": 18.31,
           "prix_rebal": 7695.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ECOC",
           "w_etf": 0.0323,
+          "w_brvm30": 0.0323,
           "avg_yield_pct": 9.21,
           "adv_mfcfa": 93.12,
           "prix_rebal": 5270.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDCC",
           "w_etf": 0.030208,
+          "w_brvm30": 0.030208,
           "avg_yield_pct": 8.62,
           "adv_mfcfa": 15.47,
           "prix_rebal": 4990.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLS",
           "w_etf": 0.030114,
+          "w_brvm30": 0.030114,
           "avg_yield_pct": 8.59,
           "adv_mfcfa": 13.19,
           "prix_rebal": 2630.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CIEC",
           "w_etf": 0.029623,
+          "w_brvm30": 0.029623,
           "avg_yield_pct": 8.45,
           "adv_mfcfa": 29.04,
           "prix_rebal": 2100.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SNTS",
           "w_etf": 0.029577,
+          "w_brvm30": 0.029577,
           "avg_yield_pct": 8.44,
           "adv_mfcfa": 239.65,
           "prix_rebal": 15400.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CABC",
           "w_etf": 0.028654,
+          "w_brvm30": 0.028654,
           "avg_yield_pct": 8.17,
           "adv_mfcfa": 7.65,
           "prix_rebal": 1020.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SOGC",
           "w_etf": 0.026457,
+          "w_brvm30": 0.026457,
           "avg_yield_pct": 7.55,
           "adv_mfcfa": 29.87,
           "prix_rebal": 4780.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLC",
           "w_etf": 0.025814,
+          "w_brvm30": 0.025814,
           "avg_yield_pct": 7.36,
           "adv_mfcfa": 22.83,
           "prix_rebal": 2160.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "STAC",
           "w_etf": 0.024084,
+          "w_brvm30": 0.024084,
           "avg_yield_pct": 6.87,
           "adv_mfcfa": 16.72,
           "prix_rebal": 1005.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDSC",
           "w_etf": 0.02343,
+          "w_brvm30": 0.02343,
           "avg_yield_pct": 6.68,
           "adv_mfcfa": 48.82,
           "prix_rebal": 1530.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SHEC",
           "w_etf": 0.023015,
+          "w_brvm30": 0.023015,
           "avg_yield_pct": 6.57,
           "adv_mfcfa": 8.71,
           "prix_rebal": 755.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PALC",
           "w_etf": 0.022174,
+          "w_brvm30": 0.022174,
           "avg_yield_pct": 6.33,
           "adv_mfcfa": 35.96,
           "prix_rebal": 10350.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CFAC",
           "w_etf": 0.021584,
+          "w_brvm30": 0.021584,
           "avg_yield_pct": 6.16,
           "adv_mfcfa": 7.7,
           "prix_rebal": 820.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PRSC",
           "w_etf": 0.018323,
+          "w_brvm30": 0.018323,
           "avg_yield_pct": 5.23,
           "adv_mfcfa": 4.38,
           "prix_rebal": 3100.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CBIBF",
           "w_etf": 0.017949,
+          "w_brvm30": 0.017949,
           "avg_yield_pct": 5.12,
           "adv_mfcfa": 35.26,
           "prix_rebal": 8300.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SGBC",
           "w_etf": 0.0174,
+          "w_brvm30": 0.0174,
           "avg_yield_pct": 4.96,
           "adv_mfcfa": 135.16,
           "prix_rebal": 15450.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BICC",
           "w_etf": 0.015478,
+          "w_brvm30": 0.015478,
           "avg_yield_pct": 4.42,
           "adv_mfcfa": 16.9,
           "prix_rebal": 6890.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "UNXC",
           "w_etf": 0.009991,
+          "w_brvm30": 0.009991,
           "avg_yield_pct": 2.85,
           "adv_mfcfa": 26.7,
           "prix_rebal": 735.0,
-          "capped": true
+          "capped": false
         }
-      ]
+      ],
+      "date_label": "03 Jul. 2023"
     },
     {
       "date": "2024-07-01",
@@ -254,244 +284,275 @@
         {
           "ticker": "SLBC",
           "w_etf": 0.069714,
+          "w_brvm30": 0.069714,
           "avg_yield_pct": 20.0,
           "adv_mfcfa": 73.45,
           "prix_rebal": 0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAB",
           "w_etf": 0.065415,
+          "w_brvm30": 0.065415,
           "avg_yield_pct": 18.77,
           "adv_mfcfa": 48.11,
           "prix_rebal": 3373.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SIBC",
           "w_etf": 0.06287,
+          "w_brvm30": 0.06287,
           "avg_yield_pct": 18.04,
           "adv_mfcfa": 100.05,
           "prix_rebal": 3245.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOABF",
           "w_etf": 0.06251,
+          "w_brvm30": 0.06251,
           "avg_yield_pct": 17.93,
           "adv_mfcfa": 34.45,
           "prix_rebal": 3400.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAC",
           "w_etf": 0.058246,
+          "w_brvm30": 0.058246,
           "avg_yield_pct": 16.71,
           "adv_mfcfa": 107.31,
           "prix_rebal": 3720.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAN",
           "w_etf": 0.054144,
+          "w_brvm30": 0.054144,
           "avg_yield_pct": 15.53,
           "adv_mfcfa": 49.15,
           "prix_rebal": 3307.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAS",
           "w_etf": 0.039098,
+          "w_brvm30": 0.039098,
           "avg_yield_pct": 11.22,
           "adv_mfcfa": 78.62,
           "prix_rebal": 2592.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ONTBF",
           "w_etf": 0.035287,
+          "w_brvm30": 0.035287,
           "avg_yield_pct": 10.12,
           "adv_mfcfa": 19.05,
           "prix_rebal": 2785.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SMBC",
           "w_etf": 0.034195,
+          "w_brvm30": 0.034195,
           "avg_yield_pct": 9.81,
           "adv_mfcfa": 23.86,
           "prix_rebal": 11950.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NTLC",
           "w_etf": 0.033463,
+          "w_brvm30": 0.033463,
           "avg_yield_pct": 9.6,
           "adv_mfcfa": 18.31,
           "prix_rebal": 7500.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SOGC",
           "w_etf": 0.032893,
+          "w_brvm30": 0.032893,
           "avg_yield_pct": 9.44,
           "adv_mfcfa": 29.87,
           "prix_rebal": 3600.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLS",
           "w_etf": 0.032173,
+          "w_brvm30": 0.032173,
           "avg_yield_pct": 9.23,
           "adv_mfcfa": 13.19,
           "prix_rebal": 2310.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ECOC",
           "w_etf": 0.030895,
+          "w_brvm30": 0.030895,
           "avg_yield_pct": 8.86,
           "adv_mfcfa": 93.12,
           "prix_rebal": 6990.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SNTS",
           "w_etf": 0.029977,
+          "w_brvm30": 0.029977,
           "avg_yield_pct": 8.6,
           "adv_mfcfa": 239.65,
           "prix_rebal": 19205.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PALC",
           "w_etf": 0.028827,
+          "w_brvm30": 0.028827,
           "avg_yield_pct": 8.27,
           "adv_mfcfa": 35.96,
           "prix_rebal": 6215.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDCC",
           "w_etf": 0.028339,
+          "w_brvm30": 0.028339,
           "avg_yield_pct": 8.13,
           "adv_mfcfa": 15.47,
           "prix_rebal": 5330.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CIEC",
           "w_etf": 0.028048,
+          "w_brvm30": 0.028048,
           "avg_yield_pct": 8.05,
           "adv_mfcfa": 29.04,
           "prix_rebal": 1995.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "STBC",
           "w_etf": 0.026857,
+          "w_brvm30": 0.026857,
           "avg_yield_pct": 7.71,
           "adv_mfcfa": 100.02,
           "prix_rebal": 7195.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SPHC",
           "w_etf": 0.02677,
+          "w_brvm30": 0.02677,
           "avg_yield_pct": 7.68,
           "adv_mfcfa": 16.29,
           "prix_rebal": 2750.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CABC",
           "w_etf": 0.02433,
+          "w_brvm30": 0.02433,
           "avg_yield_pct": 6.98,
           "adv_mfcfa": 7.65,
           "prix_rebal": 1075.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "STAC",
           "w_etf": 0.023947,
+          "w_brvm30": 0.023947,
           "avg_yield_pct": 6.87,
           "adv_mfcfa": 16.72,
           "prix_rebal": 695.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLC",
           "w_etf": 0.023563,
+          "w_brvm30": 0.023563,
           "avg_yield_pct": 6.76,
           "adv_mfcfa": 22.83,
           "prix_rebal": 2110.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SGBC",
           "w_etf": 0.021658,
+          "w_brvm30": 0.021658,
           "avg_yield_pct": 6.21,
           "adv_mfcfa": 135.16,
           "prix_rebal": 19105.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDSC",
           "w_etf": 0.020903,
+          "w_brvm30": 0.020903,
           "avg_yield_pct": 6.0,
           "adv_mfcfa": 48.82,
           "prix_rebal": 1275.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PRSC",
           "w_etf": 0.019717,
+          "w_brvm30": 0.019717,
           "avg_yield_pct": 5.66,
           "adv_mfcfa": 4.38,
           "prix_rebal": 2150.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ABJC",
           "w_etf": 0.017829,
+          "w_brvm30": 0.017829,
           "avg_yield_pct": 5.12,
           "adv_mfcfa": 11.42,
           "prix_rebal": 2020.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CBIBF",
           "w_etf": 0.017341,
+          "w_brvm30": 0.017341,
           "avg_yield_pct": 4.98,
           "adv_mfcfa": 35.26,
           "prix_rebal": 10600.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SHEC",
           "w_etf": 0.017306,
+          "w_brvm30": 0.017306,
           "avg_yield_pct": 4.96,
           "adv_mfcfa": 8.71,
           "prix_rebal": 860.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BICC",
           "w_etf": 0.017115,
+          "w_brvm30": 0.017115,
           "avg_yield_pct": 4.91,
           "adv_mfcfa": 16.9,
           "prix_rebal": 10000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CFAC",
           "w_etf": 0.016569,
+          "w_brvm30": 0.016569,
           "avg_yield_pct": 4.75,
           "adv_mfcfa": 7.7,
           "prix_rebal": 685.0,
-          "capped": true
+          "capped": false
         }
-      ]
+      ],
+      "date_label": "01 Jul. 2024"
     },
     {
       "date": "2025-07-01",
@@ -504,244 +565,275 @@
         {
           "ticker": "BOAB",
           "w_etf": 0.067256,
+          "w_brvm30": 0.067256,
           "avg_yield_pct": 18.56,
           "adv_mfcfa": 48.11,
           "prix_rebal": 4500.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOABF",
           "w_etf": 0.065383,
+          "w_brvm30": 0.065383,
           "avg_yield_pct": 18.04,
           "adv_mfcfa": 34.45,
           "prix_rebal": 3500.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAC",
           "w_etf": 0.063535,
+          "w_brvm30": 0.063535,
           "avg_yield_pct": 17.53,
           "adv_mfcfa": 107.31,
           "prix_rebal": 6100.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SIBC",
           "w_etf": 0.059633,
+          "w_brvm30": 0.059633,
           "avg_yield_pct": 16.45,
           "adv_mfcfa": 100.05,
           "prix_rebal": 4720.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAN",
           "w_etf": 0.055283,
+          "w_brvm30": 0.055283,
           "avg_yield_pct": 15.25,
           "adv_mfcfa": 49.15,
           "prix_rebal": 2455.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PALC",
           "w_etf": 0.038503,
+          "w_brvm30": 0.038503,
           "avg_yield_pct": 10.62,
           "adv_mfcfa": 35.96,
           "prix_rebal": 8150.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAS",
           "w_etf": 0.037669,
+          "w_brvm30": 0.037669,
           "avg_yield_pct": 10.39,
           "adv_mfcfa": 78.62,
           "prix_rebal": 4280.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ONTBF",
           "w_etf": 0.035132,
+          "w_brvm30": 0.035132,
           "avg_yield_pct": 9.69,
           "adv_mfcfa": 19.05,
           "prix_rebal": 2635.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NTLC",
           "w_etf": 0.034166,
+          "w_brvm30": 0.034166,
           "avg_yield_pct": 9.43,
           "adv_mfcfa": 18.31,
           "prix_rebal": 11150.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SOGC",
           "w_etf": 0.031846,
+          "w_brvm30": 0.031846,
           "avg_yield_pct": 8.79,
           "adv_mfcfa": 29.87,
           "prix_rebal": 8150.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ECOC",
           "w_etf": 0.031786,
+          "w_brvm30": 0.031786,
           "avg_yield_pct": 8.77,
           "adv_mfcfa": 93.12,
           "prix_rebal": 11840.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SNTS",
           "w_etf": 0.031037,
+          "w_brvm30": 0.031037,
           "avg_yield_pct": 8.56,
           "adv_mfcfa": 239.65,
           "prix_rebal": 25200.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SMBC",
           "w_etf": 0.030892,
+          "w_brvm30": 0.030892,
           "avg_yield_pct": 8.52,
           "adv_mfcfa": 23.86,
           "prix_rebal": 8805.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "STBC",
           "w_etf": 0.030263,
+          "w_brvm30": 0.030263,
           "avg_yield_pct": 8.35,
           "adv_mfcfa": 100.02,
           "prix_rebal": 17905.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLS",
           "w_etf": 0.029611,
+          "w_brvm30": 0.029611,
           "avg_yield_pct": 8.17,
           "adv_mfcfa": 13.19,
           "prix_rebal": 2725.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDCC",
           "w_etf": 0.029514,
+          "w_brvm30": 0.029514,
           "avg_yield_pct": 8.14,
           "adv_mfcfa": 15.47,
           "prix_rebal": 6100.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLC",
           "w_etf": 0.026687,
+          "w_brvm30": 0.026687,
           "avg_yield_pct": 7.36,
           "adv_mfcfa": 22.83,
           "prix_rebal": 2645.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NEIC",
           "w_etf": 0.026585,
+          "w_brvm30": 0.026585,
           "avg_yield_pct": 7.33,
           "adv_mfcfa": 5.1,
           "prix_rebal": 595.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ORAC",
           "w_etf": 0.026548,
+          "w_brvm30": 0.026548,
           "avg_yield_pct": 7.33,
           "adv_mfcfa": 57.15,
           "prix_rebal": 15000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CIEC",
           "w_etf": 0.026494,
+          "w_brvm30": 0.026494,
           "avg_yield_pct": 7.31,
           "adv_mfcfa": 29.04,
           "prix_rebal": 2525.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SGBC",
           "w_etf": 0.026252,
+          "w_brvm30": 0.026252,
           "avg_yield_pct": 7.24,
           "adv_mfcfa": 135.16,
           "prix_rebal": 25000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDSC",
           "w_etf": 0.023884,
+          "w_brvm30": 0.023884,
           "avg_yield_pct": 6.59,
           "adv_mfcfa": 48.82,
           "prix_rebal": 1435.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CABC",
           "w_etf": 0.0238,
+          "w_brvm30": 0.0238,
           "avg_yield_pct": 6.57,
           "adv_mfcfa": 7.65,
           "prix_rebal": 1185.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PRSC",
           "w_etf": 0.023184,
+          "w_brvm30": 0.023184,
           "avg_yield_pct": 6.4,
           "adv_mfcfa": 4.38,
           "prix_rebal": 2500.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BICC",
           "w_etf": 0.022785,
+          "w_brvm30": 0.022785,
           "avg_yield_pct": 6.29,
           "adv_mfcfa": 16.9,
           "prix_rebal": 16580.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ABJC",
           "w_etf": 0.022713,
+          "w_brvm30": 0.022713,
           "avg_yield_pct": 6.27,
           "adv_mfcfa": 11.42,
           "prix_rebal": 1700.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CBIBF",
           "w_etf": 0.02267,
+          "w_brvm30": 0.02267,
           "avg_yield_pct": 6.25,
           "adv_mfcfa": 35.26,
           "prix_rebal": 10245.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SPHC",
           "w_etf": 0.021154,
+          "w_brvm30": 0.021154,
           "avg_yield_pct": 5.84,
           "adv_mfcfa": 16.29,
           "prix_rebal": 7140.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SHEC",
           "w_etf": 0.019729,
+          "w_brvm30": 0.019729,
           "avg_yield_pct": 5.44,
           "adv_mfcfa": 8.71,
           "prix_rebal": 1075.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CFAC",
           "w_etf": 0.016008,
+          "w_brvm30": 0.016008,
           "avg_yield_pct": 4.42,
           "adv_mfcfa": 7.7,
           "prix_rebal": 660.0,
-          "capped": true
+          "capped": false
         }
-      ]
+      ],
+      "date_label": "01 Jul. 2025"
     },
     {
       "date": "2026-07-01",
@@ -754,244 +846,275 @@
         {
           "ticker": "BOABF",
           "w_etf": 0.058689,
+          "w_brvm30": 0.058689,
           "avg_yield_pct": 16.37,
           "adv_mfcfa": 34.45,
           "prix_rebal": 5900.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAB",
           "w_etf": 0.058164,
+          "w_brvm30": 0.058164,
           "avg_yield_pct": 16.23,
           "adv_mfcfa": 48.11,
           "prix_rebal": 9025.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAC",
           "w_etf": 0.055595,
+          "w_brvm30": 0.055595,
           "avg_yield_pct": 15.51,
           "adv_mfcfa": 107.31,
           "prix_rebal": 9395.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "FTSC",
           "w_etf": 0.052602,
+          "w_brvm30": 0.052602,
           "avg_yield_pct": 14.67,
           "adv_mfcfa": 11.82,
           "prix_rebal": 2000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAN",
           "w_etf": 0.0479,
+          "w_brvm30": 0.0479,
           "avg_yield_pct": 13.36,
           "adv_mfcfa": 49.15,
           "prix_rebal": 4190.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SIBC",
           "w_etf": 0.047458,
+          "w_brvm30": 0.047458,
           "avg_yield_pct": 13.24,
           "adv_mfcfa": 100.05,
           "prix_rebal": 9015.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAM",
           "w_etf": 0.037457,
+          "w_brvm30": 0.037457,
           "avg_yield_pct": 10.45,
           "adv_mfcfa": 37.05,
           "prix_rebal": 4970.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "BOAS",
           "w_etf": 0.03557,
+          "w_brvm30": 0.03557,
           "avg_yield_pct": 9.92,
           "adv_mfcfa": 78.62,
           "prix_rebal": 7440.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "STBC",
           "w_etf": 0.034219,
+          "w_brvm30": 0.034219,
           "avg_yield_pct": 9.55,
           "adv_mfcfa": 100.02,
           "prix_rebal": 24450.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PALC",
           "w_etf": 0.032559,
+          "w_brvm30": 0.032559,
           "avg_yield_pct": 9.08,
           "adv_mfcfa": 35.96,
           "prix_rebal": 8730.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ONTBF",
           "w_etf": 0.032368,
+          "w_brvm30": 0.032368,
           "avg_yield_pct": 9.03,
           "adv_mfcfa": 19.05,
           "prix_rebal": 2800.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SOGC",
           "w_etf": 0.03091,
+          "w_brvm30": 0.03091,
           "avg_yield_pct": 8.62,
           "adv_mfcfa": 29.87,
           "prix_rebal": 8395.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLS",
           "w_etf": 0.030324,
+          "w_brvm30": 0.030324,
           "avg_yield_pct": 8.46,
           "adv_mfcfa": 13.19,
           "prix_rebal": 4000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ECOC",
           "w_etf": 0.030002,
+          "w_brvm30": 0.030002,
           "avg_yield_pct": 8.37,
           "adv_mfcfa": 93.12,
           "prix_rebal": 16250.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CABC",
           "w_etf": 0.02846,
+          "w_brvm30": 0.02846,
           "avg_yield_pct": 7.94,
           "adv_mfcfa": 7.65,
           "prix_rebal": 4190.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NTLC",
           "w_etf": 0.028066,
+          "w_brvm30": 0.028066,
           "avg_yield_pct": 7.83,
           "adv_mfcfa": 18.31,
           "prix_rebal": 15990.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SNTS",
           "w_etf": 0.027947,
+          "w_brvm30": 0.027947,
           "avg_yield_pct": 7.8,
           "adv_mfcfa": 239.65,
           "prix_rebal": 29300.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDCC",
           "w_etf": 0.027648,
+          "w_brvm30": 0.027648,
           "avg_yield_pct": 7.71,
           "adv_mfcfa": 15.47,
           "prix_rebal": 12100.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ABJC",
           "w_etf": 0.027313,
+          "w_brvm30": 0.027313,
           "avg_yield_pct": 7.62,
           "adv_mfcfa": 11.42,
           "prix_rebal": 3285.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CIEC",
           "w_etf": 0.027194,
+          "w_brvm30": 0.027194,
           "avg_yield_pct": 7.59,
           "adv_mfcfa": 29.04,
           "prix_rebal": 5300.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "TTLC",
           "w_etf": 0.027009,
+          "w_brvm30": 0.027009,
           "avg_yield_pct": 7.54,
           "adv_mfcfa": 22.83,
           "prix_rebal": 2950.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SGBC",
           "w_etf": 0.026692,
+          "w_brvm30": 0.026692,
           "avg_yield_pct": 7.45,
           "adv_mfcfa": 135.16,
           "prix_rebal": 39000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NEIC",
           "w_etf": 0.026292,
+          "w_brvm30": 0.026292,
           "avg_yield_pct": 7.33,
           "adv_mfcfa": 5.1,
           "prix_rebal": 2275.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SMBC",
           "w_etf": 0.026178,
+          "w_brvm30": 0.026178,
           "avg_yield_pct": 7.3,
           "adv_mfcfa": 23.86,
           "prix_rebal": 17540.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "PRSC",
           "w_etf": 0.025748,
+          "w_brvm30": 0.025748,
           "avg_yield_pct": 7.18,
           "adv_mfcfa": 4.38,
           "prix_rebal": 4600.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "NSBC",
           "w_etf": 0.025647,
+          "w_brvm30": 0.025647,
           "avg_yield_pct": 7.16,
           "adv_mfcfa": 32.0,
           "prix_rebal": 19995.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "ORAC",
           "w_etf": 0.023263,
+          "w_brvm30": 0.023263,
           "avg_yield_pct": 6.49,
           "adv_mfcfa": 57.15,
           "prix_rebal": 16700.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SHEC",
           "w_etf": 0.023251,
+          "w_brvm30": 0.023251,
           "avg_yield_pct": 6.49,
           "adv_mfcfa": 8.71,
           "prix_rebal": 2190.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "CBIBF",
           "w_etf": 0.023156,
+          "w_brvm30": 0.023156,
           "avg_yield_pct": 6.46,
           "adv_mfcfa": 35.26,
           "prix_rebal": 24000.0,
-          "capped": true
+          "capped": false
         },
         {
           "ticker": "SDSC",
           "w_etf": 0.022319,
+          "w_brvm30": 0.022319,
           "avg_yield_pct": 6.23,
           "adv_mfcfa": 48.82,
           "prix_rebal": 2400.0,
-          "capped": true
+          "capped": false
         }
-      ]
+      ],
+      "date_label": "01 Jul. 2026"
     }
   ]
 }

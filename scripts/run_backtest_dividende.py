@@ -94,10 +94,12 @@ def compute_adv(sika_history: dict, ref_date: date) -> dict:
 
 
 # ── Sélection + pondération à une date de rebalancement ───────────────────────
-def compute_weights(ref_year: int, div_yields: dict, adv: dict) -> dict:
+def compute_weights(ref_year: int, div_yields: dict, adv: dict) -> tuple:
     """
     ref_year : année de rebalancement (ex 2026 → utilise 2023,2024,2025)
-    Retourne {ticker: weight} normalisé à 1.0
+    Retourne (w_etf, w_idx) :
+      w_etf : {ticker: weight} après ADV cap (ce que l'ETF détient)
+      w_idx : {ticker: weight} brut yield pur sans cap (indice de référence)
     """
     ref_years = [str(ref_year - 3), str(ref_year - 2), str(ref_year - 1)]
 
@@ -108,25 +110,26 @@ def compute_weights(ref_year: int, div_yields: dict, adv: dict) -> dict:
             scores[tk] = sum(vals) / len(vals)
 
     if not scores:
-        return {}
+        return {}, {}
 
     # Garder uniquement les MAX_TITRES meilleurs scores
     scores = dict(sorted(scores.items(), key=lambda x: -x[1])[:MAX_TITRES])
 
-    # Poids bruts proportionnels au score
+    # Poids indice : yield pur, sans cap (base 1.0)
     total_score = sum(scores.values())
-    raw_w = {tk: s / total_score for tk, s in scores.items()}
+    w_idx = {tk: s / total_score for tk, s in scores.items()}
 
-    # Plafond ADV : w_max_i = (ADV_i * ADV_DAYS) / AUM_TARGET_M
+    # Poids ETF : plafonné par ADV
     w_capped = {}
-    for tk, w in raw_w.items():
-        adv_tk  = adv.get(tk, 0)
-        w_max   = (adv_tk * ADV_DAYS) / AUM_TARGET_M if AUM_TARGET_M > 0 else 1.0
+    for tk, w in w_idx.items():
+        adv_tk = adv.get(tk, 0)
+        w_max  = (adv_tk * ADV_DAYS) / AUM_TARGET_M if AUM_TARGET_M > 0 else 1.0
         w_capped[tk] = min(w, w_max) if w_max > 0 else w
 
-    # Renormaliser
     total = sum(w_capped.values()) or 1.0
-    return {tk: w / total for tk, w in w_capped.items() if w > 0}
+    w_etf = {tk: w / total for tk, w in w_capped.items() if w > 0}
+
+    return w_etf, w_idx
 
 
 # ── Construction NAV (backtest) ────────────────────────────────────────────────
@@ -193,9 +196,9 @@ def build_nav(sika_history: dict, div_yields: dict, rebal_years: list) -> tuple:
             adv       = compute_adv(sika_history, d_obj)
             adv_at_rebal[dt] = adv
 
-            new_w_etf = compute_weights(ref_year, div_yields, adv)
+            new_w_etf, new_w_idx = compute_weights(ref_year, div_yields, adv)
 
-            # Spread de transaction (aller-retour / 2 pour le one-way)
+            # Spread de transaction
             all_tks = set(curr_w_etf) | set(new_w_etf)
             cost = sum(
                 abs(new_w_etf.get(tk, 0) - curr_w_etf.get(tk, 0))
@@ -207,7 +210,7 @@ def build_nav(sika_history: dict, div_yields: dict, rebal_years: list) -> tuple:
 
             nav_e *= (1.0 - cost)
 
-            # Log rebal
+            # Log rebal — w_brvm30 = poids indice (yield pur, sans ADV cap)
             basket_log = []
             for tk, w in sorted(new_w_etf.items(), key=lambda x: -x[1]):
                 adv_tk  = adv.get(tk, 0)
@@ -216,13 +219,15 @@ def build_nav(sika_history: dict, div_yields: dict, rebal_years: list) -> tuple:
                               if div_yields.get(tk, {}).get(y, 0) > 0)
                 n_y     = sum(1 for y in y_ref if div_yields.get(tk, {}).get(y, 0) > 0)
                 avg_y   = avg_y / n_y if n_y else 0
+                w_idx_tk = new_w_idx.get(tk, w)
                 basket_log.append({
-                    "ticker":       tk,
-                    "w_etf":        round(w, 6),
+                    "ticker":        tk,
+                    "w_etf":         round(w, 6),
+                    "w_brvm30":      round(w_idx_tk, 6),   # poids indice pur
                     "avg_yield_pct": round(avg_y * 100, 2),
-                    "adv_mfcfa":    round(adv_tk, 2),
-                    "prix_rebal":   round(prices.get(tk, 0), 0),
-                    "capped":       w < (new_w_etf.get(tk, w) + 1e-9),
+                    "adv_mfcfa":     round(adv_tk, 2),
+                    "prix_rebal":    round(prices.get(tk, 0), 0),
+                    "capped":        w < w_idx_tk - 1e-9,
                 })
             rebal_log.append({
                 "date":     dt,
@@ -235,7 +240,7 @@ def build_nav(sika_history: dict, div_yields: dict, rebal_years: list) -> tuple:
             })
 
             curr_w_etf = new_w_etf.copy()
-            curr_w_idx = new_w_etf.copy()   # indice = mêmes poids, sans frais ni spread
+            curr_w_idx = new_w_idx.copy()   # indice = yield pur, sans ADV cap
             prev_prices = {tk: prices.get(tk, prev_prices.get(tk, 1))
                            for tk in curr_w_etf}
             w_etf_history[dt] = curr_w_etf.copy()
@@ -365,6 +370,7 @@ def init_nav_latest(w_etf_history, sika_history, rebal_log, nav_etf, nav_idx,
         basket.append({
             "ticker":        tk,
             "poids_pct":     round(w * 100, 4),
+            "w_brvm30":      round(b.get("w_brvm30", w), 6),   # poids indice
             "avg_yield_pct": b.get("avg_yield_pct", 0),
             "adv_mfcfa":     b.get("adv_mfcfa", 0),
             "dernier_prix":  round(latest_prices.get(tk, b.get("prix_rebal", 0)), 0),
