@@ -1,0 +1,82 @@
+name: iNAV ETF Dividende (heures de marche)
+
+on:
+  schedule:
+    - cron: '30 9 * * 1-5'
+    - cron: '40 9 * * 1-5'
+    - cron: '50 9 * * 1-5'
+    - cron: '0,10,20,30,40,50 10 * * 1-5'
+    - cron: '0,10,20,30,40,50 11 * * 1-5'
+    - cron: '0,10,20,30,40,50 12 * * 1-5'
+    - cron: '0,10,20,30,40,50 13 * * 1-5'
+    - cron: '0,10,20,30,40,50 14 * * 1-5'
+    - cron: '0,10,20,30 15 * * 1-5'
+  push:
+    paths:
+      - 'data/intraday_nav.json'
+  workflow_dispatch:
+
+jobs:
+  inav:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 1
+
+      - name: Verifier heures de marche
+        id: check_hours
+        run: |
+          python3 -c "
+          import os
+          from datetime import datetime, timezone, time as dtime
+          now = datetime.now(timezone.utc)
+          t = now.time().replace(tzinfo=None)
+          is_open = now.weekday() < 5 and dtime(9,30) <= t <= dtime(15,30)
+          val = 'true' if is_open else 'false'
+          print(f'market_open={val}')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f'market_open={val}\n')
+          "
+
+      - name: Attendre 5 minutes
+        if: steps.check_hours.outputs.market_open == 'true'
+        run: sleep 300
+
+      - name: Setup Python 3.11
+        if: steps.check_hours.outputs.market_open == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements/requirements_cloud.txt
+
+      - name: Installer dependances
+        if: steps.check_hours.outputs.market_open == 'true'
+        run: pip install -r requirements/requirements_cloud.txt
+
+      - name: Calculer iNAV
+        if: steps.check_hours.outputs.market_open == 'true'
+        run: python scripts/scrape_intraday_cloud.py
+
+      - name: Mettre a jour NAV quotidienne
+        if: steps.check_hours.outputs.market_open == 'true'
+        run: python scripts/calc_nav_cloud.py
+
+      - name: Commit et push
+        if: steps.check_hours.outputs.market_open == 'true'
+        run: |
+          git config user.name "cgf-bot"
+          git config user.email "bot@cgf-bourse.ci"
+          git add data/intraday_nav.json data/nav_intraday_history.json data/launch_state.json data/nav_latest.json
+          git diff --staged --quiet || git commit -m "iNAV ETFDividende: snapshot $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && break
+            echo "Push echoue (tentative $i/5), retry dans 10s..."
+            sleep 10
+          done

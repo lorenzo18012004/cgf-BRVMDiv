@@ -1,0 +1,38 @@
+name: Mise a jour dividendes hebdomadaire
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  dividendes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dependances
+        run: pip install -r requirements/requirements_cloud.txt
+
+      - name: Scraper dividendes Sika Finance
+        run: python scripts/scrape_sika_dividendes.py
+
+      - name: Commit et push
+        run: |
+          git config user.name "cgf-bot"
+          git config user.email "bot@cgf-bourse.ci"
+          git add data/sika_dividendes.json || true
+          git diff --staged --quiet || git commit -m "data: dividendes BRVM $(date -u +'%Y-%m-%d')"
+          git pull --rebase origin main && git push || true

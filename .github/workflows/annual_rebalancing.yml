@@ -1,0 +1,38 @@
+name: Rebalancement annuel ETF Dividende (1er juillet)
+
+on:
+  schedule:
+    - cron: '0 7 1 7 *'
+  workflow_dispatch:
+
+jobs:
+  rebalancing:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dependances
+        run: pip install -r requirements/requirements_cloud.txt
+
+      - name: Lancer backtest + mise a jour panier
+        run: python scripts/run_backtest_dividende.py
+
+      - name: Commit et push
+        run: |
+          git config user.name "cgf-bot"
+          git config user.email "bot@cgf-bourse.ci"
+          git add data/nav_latest.json data/rebal_detail.json
+          git diff --staged --quiet || git commit -m "rebal: ETF Dividende $(date -u +'%Y-%m-%d')"
+          git pull --rebase origin main && git push || true
