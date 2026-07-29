@@ -131,7 +131,8 @@ class IntradayScraperCloud(BaseScript):
         snapshot = {
             "time":                 now_utc.strftime("%H:%M"),
             "nav_indice":           nav_result["nav_indice"],
-            "halal_official":       nav_result["nav_indice"],
+            "dividende_official":   nav_result["nav_indice"],
+            "brvm30_star":          nav_result["nav_indice"],
             "vl_par_part":          nav_result["vl_par_part_fcfa"],
             "vl_live_fcfa":         vl_live,
             "perf_since_launch":    perf_launch,
