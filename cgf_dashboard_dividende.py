@@ -3883,6 +3883,59 @@ def _render_live():
 
                 df_out = pd.DataFrame(rows)
 
+                # ── Contrôle qualité données ─────────────────────────────────
+                _dq_issues = []
+                _dq_today  = datetime.now().strftime("%Y-%m-%d")
+                for _dq_r in rows:
+                    _dqtk = _dq_r["Ticker"]
+                    if _dq_r.get("_excluded"):
+                        continue
+                    _dqhist = _sh_live.get(_dqtk, {})
+                    if not _dqhist:
+                        _dq_issues.append(f"**{_dqtk}** : aucun historique dans sika_history.json")
+                        continue
+                    _dqdates = sorted(d for d in _dqhist if d <= _dq_today)[-30:]
+                    if _dqdates:
+                        _dqnz = sum(1 for d in _dqdates if (_dqhist[d].get("volume") or 0) == 0)
+                        if _dqnz / len(_dqdates) >= 0.9:
+                            _dq_issues.append(
+                                f"**{_dqtk}** : volume = 0 sur {_dqnz}/{len(_dqdates)} "
+                                f"jours récents — données volume suspectes"
+                            )
+                    _dqcloses = [_dqhist[d].get("close") for d in _dqdates[-10:]
+                                 if _dqhist[d].get("close")]
+                    if len(_dqcloses) >= 10 and len(set(_dqcloses)) == 1:
+                        _dq_issues.append(
+                            f"**{_dqtk}** : prix figé à {int(_dqcloses[0]):,} FCFA "
+                            f"depuis ≥ 10 jours — vérifier suspension/données"
+                        )
+                    _dqvar = _dq_r.get("Var. J (%)")
+                    if isinstance(_dqvar, (int, float)) and abs(_dqvar) > 15:
+                        _dq_issues.append(
+                            f"**{_dqtk}** : variation journalière extrême "
+                            f"**{_dqvar:+.2f}%** — confirmer ou erreur de scraping"
+                        )
+                for _dqe in _last_rb_live.get("excluded", []):
+                    _dqtk2  = _dqe["ticker"]
+                    _dqadv  = _dqe.get("adv_mfcfa", 0)
+                    _dqwidx = _dqe.get("w_brvm30", 0) * 100
+                    if _dqwidx > 1.0 and _dqadv < 0.5:
+                        _dq_issues.append(
+                            f"**{_dqtk2}** exclu pour ADV={_dqadv:.2f} MFCFA/j "
+                            f"mais poids indice={_dqwidx:.2f}% — vérifier données volume"
+                        )
+                if _dq_issues:
+                    with st.expander(
+                        f"⚠️ {len(_dq_issues)} alerte(s) qualité données — cliquer pour détails",
+                        expanded=True,
+                    ):
+                        for _dqmsg in _dq_issues:
+                            st.markdown(f"- {_dqmsg}")
+                        st.caption(
+                            "Ces alertes signalent des données potentiellement incorrectes. "
+                            "Relancer scrape_sika_history.py pour corriger les volumes."
+                        )
+
                 def _color_pct(val):
                     if isinstance(val, (int, float)):
                         return f"color: {'#2d7a4f' if val > 0 else '#c0392b' if val < 0 else '#7d8fa3'}; font-weight:500"
