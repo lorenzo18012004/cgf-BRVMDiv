@@ -3861,7 +3861,7 @@ def _render_live():
                         "Val. (M FCFA)":       round(r.get("pv_mfcfa") or 0, 1),
                         "Stale":               "" if r.get("prix_stale", False) else "",
                     })
-                _etf_tickers_set = {r["ticker"] for r in rows}
+                _etf_tickers_set = {r["Ticker"] for r in rows}
                 for _e in sorted(_last_rb_live.get("excluded", []), key=lambda x: x.get("w_brvm30", 0), reverse=True):
                     _tk = _e["ticker"]
                     if _tk in _etf_tickers_set:
