@@ -3,14 +3,6 @@ name: iNAV ETF Dividende (heures de marche)
 on:
   schedule:
     - cron: '30 9 * * 1-5'
-    - cron: '40 9 * * 1-5'
-    - cron: '50 9 * * 1-5'
-    - cron: '0,10,20,30,40,50 10 * * 1-5'
-    - cron: '0,10,20,30,40,50 11 * * 1-5'
-    - cron: '0,10,20,30,40,50 12 * * 1-5'
-    - cron: '0,10,20,30,40,50 13 * * 1-5'
-    - cron: '0,10,20,30,40,50 14 * * 1-5'
-    - cron: '0,10,20,30 15 * * 1-5'
   workflow_dispatch:
 
 concurrency:
