@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Checkout
@@ -68,15 +69,33 @@ jobs:
         if: steps.check_hours.outputs.market_open == 'true'
         run: python scripts/calc_nav_cloud.py
 
-      - name: Commit et push
+      - name: Commit et push donnees iNAV
         if: steps.check_hours.outputs.market_open == 'true'
         run: |
           git config user.name "cgf-bot"
           git config user.email "bot@cgf-bourse.ci"
           git add data/intraday_nav.json data/nav_intraday_history.json data/launch_state.json data/nav_latest.json
           git diff --staged --quiet || git commit -m "iNAV ETFDividende: snapshot $(date -u +'%Y-%m-%d %H:%M') UTC"
-          for i in 1 2 3 4 5; do
-            git pull --rebase origin main && git push && break
-            echo "Push echoue (tentative $i/5), retry dans 10s..."
-            sleep 10
-          done
+          git pull --rebase origin main && git push || echo "[WARN] Push echoue"
+
+      - name: Relancer boucle iNAV (workflow_dispatch)
+        if: steps.check_hours.outputs.market_open == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BOUCLE=$(python3 -c "
+          from datetime import datetime, timezone, time as dtime
+          now = datetime.now(timezone.utc)
+          t = now.time().replace(tzinfo=None)
+          print('true' if now.weekday() < 5 and dtime(9,30) <= t < dtime(15,20) else 'false')
+          ")
+          if [ "$BOUCLE" = "true" ]; then
+            HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/workflows/intraday.yml/dispatches" \
+              -d '{"ref":"main"}')
+            echo "[BOUCLE] workflow_dispatch declenche — HTTP $HTTP"
+          else
+            echo "[FIN] Hors heures de marche — boucle arretee"
+          fi
