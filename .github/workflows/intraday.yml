@@ -3,19 +3,17 @@ name: iNAV ETF Dividende (heures de marche)
 on:
   schedule:
     - cron: '30 9 * * 1-5'
-    - cron: '40 9 * * 1-5'
-    - cron: '50 9 * * 1-5'
-    - cron: '0,10,20,30,40,50 10 * * 1-5'
-    - cron: '0,10,20,30,40,50 11 * * 1-5'
-    - cron: '0,10,20,30,40,50 12 * * 1-5'
-    - cron: '0,10,20,30,40,50 13 * * 1-5'
-    - cron: '0,10,20,30,40,50 14 * * 1-5'
-    - cron: '0,10,20,30 15 * * 1-5'
+    - cron: '45 9 * * 1-5'
+    - cron: '0,15,30,45 10 * * 1-5'
+    - cron: '0,15,30,45 11 * * 1-5'
+    - cron: '0,15,30,45 12 * * 1-5'
+    - cron: '0,15,30,45 13 * * 1-5'
+    - cron: '0,15,30,45 14 * * 1-5'
+    - cron: '0,15,30 15 * * 1-5'
+  push:
+    paths:
+      - 'data/intraday_nav.json'
   workflow_dispatch:
-
-concurrency:
-  group: inav-loop
-  cancel-in-progress: false
 
 jobs:
   inav:
@@ -57,35 +55,15 @@ jobs:
         if: steps.check_hours.outputs.market_open == 'true'
         run: pip install -r requirements/requirements_cloud.txt
 
-      - name: Detection actions corporatives (1er snapshot du jour)
-        if: steps.check_hours.outputs.market_open == 'true'
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-        run: |
-          python3 -c "
-          import json, os
-          from datetime import date
-          today = date.today().isoformat()
-          hist_path = 'data/nav_intraday_history.json'
-          already_done = os.path.exists(hist_path) and bool(json.load(open(hist_path)).get(today))
-          if already_done:
-              print('[' + today + '] Snapshots deja presents.')
-          else:
-              import subprocess
-              r = subprocess.run(['python', 'scripts/check_corporate_actions.py'], capture_output=True, text=True)
-              print(r.stdout)
-          "
-
       - name: Calculer iNAV
         if: steps.check_hours.outputs.market_open == 'true'
         run: python scripts/scrape_intraday_cloud.py
-
       - name: Mettre a jour NAV quotidienne
         if: steps.check_hours.outputs.market_open == 'true'
         run: python scripts/calc_nav_cloud.py
 
-      - name: Commit et push
+
+      - name: Commit et push (PAT pour declencher boucle)
         if: steps.check_hours.outputs.market_open == 'true'
         run: |
           git config user.name "cgf-bot"
