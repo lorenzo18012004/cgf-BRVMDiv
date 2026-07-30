@@ -33,18 +33,13 @@ jobs:
       - name: Verifier heures de marche
         id: check_hours
         run: |
-          python3 -c "
-          import os
+          MARKET_OPEN=$(python3 -c "
           from datetime import datetime, timezone, time as dtime
           now = datetime.now(timezone.utc)
           t = now.time().replace(tzinfo=None)
-          is_open = now.weekday() < 5 and dtime(9,30) <= t <= dtime(15,30)
-          val = 'true' if is_open else 'false'
-          print(f'market_open={val}')
-          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-              f.write(f'market_open={val}
-')
-          "
+          print('true' if now.weekday() < 5 and dtime(9,30) <= t <= dtime(15,30) else 'false')
+          ")
+          echo "market_open=$MARKET_OPEN" >> $GITHUB_OUTPUT
 
       - name: Attendre 5 minutes
         if: steps.check_hours.outputs.market_open == 'true'
@@ -61,6 +56,26 @@ jobs:
       - name: Installer dependances
         if: steps.check_hours.outputs.market_open == 'true'
         run: pip install -r requirements/requirements_cloud.txt
+
+      - name: Detection actions corporatives (1er snapshot du jour)
+        if: steps.check_hours.outputs.market_open == 'true'
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          python3 -c "
+          import json, os
+          from datetime import date
+          today = date.today().isoformat()
+          hist_path = 'data/nav_intraday_history.json'
+          already_done = os.path.exists(hist_path) and bool(json.load(open(hist_path)).get(today))
+          if already_done:
+              print('[' + today + '] Snapshots deja presents.')
+          else:
+              import subprocess
+              r = subprocess.run(['python', 'scripts/check_corporate_actions.py'], capture_output=True, text=True)
+              print(r.stdout)
+          "
 
       - name: Calculer iNAV
         if: steps.check_hours.outputs.market_open == 'true'
