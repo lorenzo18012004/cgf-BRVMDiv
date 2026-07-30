@@ -3885,7 +3885,7 @@ def _render_live():
 
                 # ── Contrôle qualité données ─────────────────────────────────
                 _dq_issues = []
-                _dq_today  = datetime.now().strftime("%Y-%m-%d")
+                _dq_today  = pd.Timestamp.now(tz="UTC").strftime("%Y-%m-%d")
                 for _dq_r in rows:
                     _dqtk = _dq_r["Ticker"]
                     if _dq_r.get("_excluded"):
