@@ -11,10 +11,11 @@ on:
     - cron: '0,10,20,30,40,50 13 * * 1-5'
     - cron: '0,10,20,30,40,50 14 * * 1-5'
     - cron: '0,10,20,30 15 * * 1-5'
-  push:
-    paths:
-      - 'data/intraday_nav.json'
   workflow_dispatch:
+
+concurrency:
+  group: inav-loop
+  cancel-in-progress: false
 
 jobs:
   inav:
