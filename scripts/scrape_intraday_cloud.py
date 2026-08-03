@@ -79,7 +79,9 @@ class IntradayScraperCloud(BaseScript):
                         "gap_contrib_pct": 0.0,
                     }
 
-            _nav_live   = _nav_base * (1.0 + _total_ret)
+            _nav_live      = _nav_base * (1.0 + _total_ret)
+            _nav_base_idx  = float(_nl.get("nav_indice_reference") or _nav_base)
+            _index_live    = round(_nav_base_idx * (1.0 + _total_ret), 4)
             _nav_anchor = float(_ls["nav_index_at_launch"]) if _ls and _ls.get("nav_index_at_launch") else None
             if _nav_anchor:
                 _vl_live = float(_ls.get("par_fcfa", 100000)) * (_nav_live / _nav_anchor)
@@ -137,8 +139,7 @@ class IntradayScraperCloud(BaseScript):
         snapshot = {
             "time":                 now_utc.strftime("%H:%M"),
             "nav_indice":           nav_result["nav_indice"],
-            "dividende_official":   nav_result["nav_indice"],
-            "brvm30_star":          nav_result["nav_indice"],
+            "dividende_index":      _index_live,
             "vl_par_part":          nav_result["vl_par_part_fcfa"],
             "vl_live_fcfa":         vl_live,
             "perf_since_launch":    perf_launch,

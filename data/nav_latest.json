@@ -3203,6 +3203,7 @@
   "sharpe": 4.13,
   "perf_indice_total": 175.93,
   "perf_indice_ann": 39.19,
+  "nav_indice_reference": 275.9252,
   "basket": [
     {
       "ticker": "BOABF",

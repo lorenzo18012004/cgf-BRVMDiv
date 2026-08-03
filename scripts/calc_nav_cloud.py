@@ -80,7 +80,9 @@ class NavCalculatorCloud(BaseScript):
         v_total   = sum(portfolio_new.values()) or 1.0
         total_ret = v_total - 1.0
 
-        nav_new = nav_base * v_total * fee_daily
+        nav_new       = nav_base * v_total * fee_daily
+        nav_base_idx  = float(nl.get("nav_indice_reference") or nav_base)
+        nav_index_new = nav_base_idx * v_total  # sans fee ni cash drag
 
         for item in basket:
             tk = item["ticker"]
@@ -115,16 +117,17 @@ class NavCalculatorCloud(BaseScript):
             live_series.sort(key=lambda x: x[0])
 
         nl.update({
-            "calc_date":          today_str,
-            "launched":           True,
-            "nav_indice":         round(nav_new, 4),
-            "vl_par_part_fcfa":   round(vl_new, 0),
-            "aum_mfcfa":          round(aum, 1),
-            "perf_since_launch":  round(perf_lct, 4),
-            "change_day_pct":     round(chg, 4),
-            "source":             "cloud_fallback_sika",
-            "n_live_prices":      n_live,
-            "nav_live_series":    live_series,
+            "calc_date":           today_str,
+            "launched":            True,
+            "nav_indice":          round(nav_new, 4),
+            "nav_indice_reference": round(nav_index_new, 4),
+            "vl_par_part_fcfa":    round(vl_new, 0),
+            "aum_mfcfa":           round(aum, 1),
+            "perf_since_launch":   round(perf_lct, 4),
+            "change_day_pct":      round(chg, 4),
+            "source":              "cloud_fallback_sika",
+            "n_live_prices":       n_live,
+            "nav_live_series":     live_series,
         })
 
         for item in nl["basket"]:
