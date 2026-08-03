@@ -82,18 +82,24 @@ class IntradayScraperCloud(BaseScript):
             _nav_live   = _nav_base * (1.0 + _total_ret)
             _nav_anchor = float(_ls["nav_index_at_launch"]) if _ls and _ls.get("nav_index_at_launch") else None
             if _nav_anchor:
-                _vl_live = float(_ls["par_fcfa"]) * (_nav_live / _nav_anchor)
+                _vl_live = float(_ls.get("par_fcfa", 100000)) * (_nav_live / _nav_anchor)
                 _n_parts = _ls.get("n_parts", _nl.get("n_parts", 25000))
             else:
                 _nav_anchor = _nav_live
                 _par        = float((_ls or {}).get("par_fcfa", _vl_base))
                 _vl_live    = _par
                 _n_parts    = _nl.get("n_parts", 25000)
-                if _ls:
-                    _ls["nav_index_at_launch"] = round(_nav_anchor, 6)
-                    with open(os.path.join(self.data_dir, "launch_state.json"), "w", encoding="utf-8") as _fw:
-                        json.dump(_ls, _fw, ensure_ascii=False, indent=2)
-                    print(f"[LANCEMENT] nav_index_at_launch fixé à {_nav_anchor:.6f}")
+                _ls_new = {
+                    "launch_date":         today_str,
+                    "par_fcfa":            100000,
+                    "n_parts":             _n_parts,
+                    "aum_initial_mfcfa":   round(_par * _n_parts / 1_000_000, 1),
+                    "nav_index_at_launch": round(_nav_anchor, 6),
+                    "created_at":          now_utc.strftime("%Y-%m-%d %H:%M"),
+                }
+                with open(os.path.join(self.data_dir, "launch_state.json"), "w", encoding="utf-8") as _fw:
+                    json.dump(_ls_new, _fw, ensure_ascii=False, indent=2)
+                print(f"[LANCEMENT] launch_state.json créé — nav_index_at_launch={_nav_anchor:.6f}")
 
             nav_result = {
                 "nav_indice":       round(_nav_live, 4),
