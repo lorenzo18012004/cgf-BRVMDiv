@@ -1,12 +1,12 @@
 {
   "etf_name": "CGF ETF Dividende BRVM",
   "calc_date": "2026-07-31",
-  "launched": true,
+  "launched": false,
   "nav_indice": 267.155,
-  "vl_par_part_fcfa": 99910.0,
-  "aum_mfcfa": 2497.7,
+  "vl_par_part_fcfa": 100000,
+  "aum_mfcfa": 2500.0,
   "n_parts": 25000,
-  "perf_since_launch": -0.0901,
+  "perf_since_launch": null,
   "change_day_pct": -0.0002,
   "last_rebal_date": "2026-07-29",
   "nav_live_series": [
@@ -3644,5 +3644,9 @@
   "yield_cap_pct": 20.0,
   "min_years_dividend": 2,
   "source": "cloud_fallback_sika",
-  "n_live_prices": 30
+  "n_live_prices": 30,
+  "launch_date": null,
+  "perf_ytd": null,
+  "perf_3m": null,
+  "perf_1y": null
 }
