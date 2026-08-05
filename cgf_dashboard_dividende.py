@@ -494,7 +494,7 @@ DIV_DIR    = DATA_DIR
 sys.path.insert(0, os.path.join(BASE, "scripts"))
 
 # Sur Streamlit Cloud, les fichiers live sont lus depuis GitHub (toujours frais)
-_GITHUB_RAW_DEFAULT = "https://raw.githubusercontent.com/lorenzo18012004/cgf-etf-dividende/main"
+_GITHUB_RAW_DEFAULT = "https://raw.githubusercontent.com/lorenzo18012004/cgf-BRVMDiv/main"
 _GITHUB_RAW   = _GITHUB_RAW_DEFAULT   # fallback public repo — pas besoin de secret
 _GITHUB_TOKEN = None
 _GITHUB_REPO  = None
