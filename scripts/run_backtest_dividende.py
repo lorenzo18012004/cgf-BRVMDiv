@@ -385,18 +385,26 @@ def init_nav_latest(w_etf_history, sika_history, rebal_log, nav_etf, nav_idx,
 
     nav_indice_now = nav_etf[max(nav_etf.keys())] if nav_etf else 100.0
 
+    # Préserver les données live si l'ETF est déjà lancé
+    existing_nl = {}
+    if os.path.exists(NAV_PATH):
+        with open(NAV_PATH, encoding="utf-8") as f:
+            existing_nl = json.load(f)
+    already_launched = existing_nl.get("launched", False)
+
     nl = {
         "etf_name":            ETF_NAME,
-        "calc_date":           None,
-        "launched":            False,
-        "nav_indice":          round(nav_indice_now, 4),
-        "vl_par_part_fcfa":    PAR_FCFA,
-        "aum_mfcfa":           round(PAR_FCFA * N_PARTS / 1_000_000, 1),
+        "calc_date":           existing_nl.get("calc_date") if already_launched else None,
+        "launched":            already_launched,
+        "nav_indice":          existing_nl.get("nav_indice", round(nav_indice_now, 4)) if already_launched else round(nav_indice_now, 4),
+        "vl_par_part_fcfa":    existing_nl.get("vl_par_part_fcfa", PAR_FCFA) if already_launched else PAR_FCFA,
+        "aum_mfcfa":           existing_nl.get("aum_mfcfa", round(PAR_FCFA * N_PARTS / 1_000_000, 1)) if already_launched else round(PAR_FCFA * N_PARTS / 1_000_000, 1),
         "n_parts":             N_PARTS,
-        "perf_since_launch":   0.0,
-        "change_day_pct":      None,
+        "perf_since_launch":   existing_nl.get("perf_since_launch", 0.0) if already_launched else 0.0,
+        "change_day_pct":      existing_nl.get("change_day_pct") if already_launched else None,
         "last_rebal_date":     LAUNCH_DATE,
-        "nav_live_series":     [],
+        "nav_live_series":     existing_nl.get("nav_live_series", []) if already_launched else [],
+        "nav_indice_reference": existing_nl.get("nav_indice_reference") if already_launched else (round(nav_idx[max(nav_idx.keys())], 4) if nav_idx else None),
         "nav_series":          nav_series,
         "perf_backtest_total": metrics_etf.get("perf_total_pct"),
         "perf_backtest_ann":   metrics_etf.get("perf_ann_pct"),
@@ -405,7 +413,6 @@ def init_nav_latest(w_etf_history, sika_history, rebal_log, nav_etf, nav_idx,
         "sharpe":              metrics_etf.get("sharpe"),
         "perf_indice_total":    metrics_idx.get("perf_total_pct"),
         "perf_indice_ann":      metrics_idx.get("perf_ann_pct"),
-        "nav_indice_reference": round(nav_idx[max(nav_idx.keys())], 4) if nav_idx else None,
         "basket":               basket,
         "n_basket":            len(basket),
         "methodology":         "price_return",
@@ -416,6 +423,70 @@ def init_nav_latest(w_etf_history, sika_history, rebal_log, nav_etf, nav_idx,
     with open(NAV_PATH, "w", encoding="utf-8") as f:
         json.dump(nl, f, ensure_ascii=False, indent=2)
     print(f"\nnav_latest.json écrit : {len(basket)} titres, nav_indice={nav_indice_now:.4f}")
+
+
+# ── Validation results (format attendu par generate_dashboard_data.py) ────────
+def save_validation_results(nav_etf, nav_idx, m_etf, m_idx, rebal_log):
+    import math
+    all_dates = sorted(nav_etf.keys())
+    nav_etf_list = [[d, round(nav_etf[d], 4)] for d in all_dates]
+    nav_idx_list = [[d, round(nav_idx[d], 4)] for d in sorted(nav_idx.keys())]
+
+    # Tracking error et tracking difference
+    common = sorted(set(nav_etf) & set(nav_idx))
+    diff_rets = []
+    for i in range(1, len(common)):
+        r_e = nav_etf[common[i]] / nav_etf[common[i-1]] - 1
+        r_i = nav_idx[common[i]] / nav_idx[common[i-1]] - 1
+        diff_rets.append(r_e - r_i)
+    mean_d = sum(diff_rets) / len(diff_rets) if diff_rets else 0
+    var_d  = sum((r - mean_d)**2 for r in diff_rets) / len(diff_rets) if diff_rets else 0
+    te_ann = math.sqrt(var_d * 252) * 100
+
+    perf_etf   = m_etf.get("perf_total_pct", 0) / 100
+    perf_bench = m_idx.get("perf_total_pct", 0) / 100
+    n_years    = m_etf.get("n_days", 252 * 3) / 252 if "n_days" in m_etf else (
+        (date.fromisoformat(all_dates[-1]) - date.fromisoformat(all_dates[0])).days / 365.25
+    )
+    td_ann = ((1 + perf_etf) ** (1 / n_years) - 1 - ((1 + perf_bench) ** (1 / n_years) - 1)) * 100 if n_years > 0 else 0
+
+    # Perf par année
+    perf_by_year = {}
+    all_yr = sorted({d[:4] for d in nav_etf})
+    for yr in all_yr:
+        dates_yr = [d for d in sorted(nav_etf) if d.startswith(yr)]
+        if len(dates_yr) < 2:
+            continue
+        r_etf = nav_etf[dates_yr[-1]] / nav_etf[dates_yr[0]] - 1
+        r_idx = nav_idx.get(dates_yr[-1], nav_idx.get(dates_yr[0], nav_idx[min(nav_idx.keys())])) / \
+                nav_idx.get(dates_yr[0], nav_idx[min(nav_idx.keys())]) - 1
+        perf_by_year[yr] = {
+            "etf_pct":    round(r_etf * 100, 2),
+            "indice_pct": round(r_idx * 100, 2),
+            "td_pct":     round((r_etf - r_idx) * 100, 2),
+        }
+
+    total_turnover = sum(r.get("turnover", 0) / 100 for r in rebal_log)
+    avg_turnover   = total_turnover / len(rebal_log) * 100 if rebal_log else 0
+
+    vr = {
+        "generated_at":               date.today().isoformat(),
+        "backtest_start":             all_dates[0] if all_dates else "",
+        "backtest_end":               all_dates[-1] if all_dates else "",
+        "metrics_etf":                m_etf,
+        "metrics_indice":             m_idx,
+        "tracking_difference_ann_pct": round(td_ann, 2),
+        "tracking_error_ann_pct":      round(te_ann, 2),
+        "total_turnover_rebal":        round(total_turnover, 4),
+        "avg_turnover_per_rebal_pct":  round(avg_turnover, 2),
+        "perf_by_year":                perf_by_year,
+        "nav_etf_series":              nav_etf_list[-500:],
+        "nav_index_series":            nav_idx_list[-500:],
+    }
+    vr_path = os.path.join(DATA_DIR, "validation_results.json")
+    with open(vr_path, "w", encoding="utf-8") as f:
+        json.dump(vr, f, ensure_ascii=False, indent=2)
+    print(f"validation_results.json écrit ({len(nav_etf_list)} points ETF)")
 
 
 # ── Rebal detail ──────────────────────────────────────────────────────────────
@@ -438,16 +509,20 @@ def init_live_files():
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(content, f, ensure_ascii=False, indent=2)
 
-    ls = {
-        "etf_name":            ETF_NAME,
-        "launch_date":         LAUNCH_DATE,
-        "nav_index_at_launch": None,
-        "par_fcfa":            PAR_FCFA,
-        "n_parts":             N_PARTS,
-    }
-    with open(LAUNCH_PATH, "w", encoding="utf-8") as f:
-        json.dump(ls, f, ensure_ascii=False, indent=2)
-    print("launch_state.json et fichiers live initialisés")
+    # Ne pas écraser launch_state.json si déjà créé par le lancement réel
+    if not os.path.exists(LAUNCH_PATH):
+        ls = {
+            "etf_name":            ETF_NAME,
+            "launch_date":         LAUNCH_DATE,
+            "nav_index_at_launch": None,
+            "par_fcfa":            PAR_FCFA,
+            "n_parts":             N_PARTS,
+        }
+        with open(LAUNCH_PATH, "w", encoding="utf-8") as f:
+            json.dump(ls, f, ensure_ascii=False, indent=2)
+        print("launch_state.json et fichiers live initialisés")
+    else:
+        print("launch_state.json déjà existant — conservé")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -492,6 +567,12 @@ def main():
     init_nav_latest(w_etf_history, sika_history, rebal_log, nav_etf, nav_idx,
                     div_yields, m_etf, m_idx)
     save_rebal_detail(rebal_log)
+    save_validation_results(nav_etf, nav_idx, m_etf, m_idx, rebal_log)
+
+    print("\n[5] Génération dashboard_data.json...")
+    import subprocess
+    dash_script = os.path.join(os.path.dirname(__file__), "generate_dashboard_data.py")
+    subprocess.run([sys.executable, dash_script], check=True)
 
     print("\n✓ Backtest terminé.")
 

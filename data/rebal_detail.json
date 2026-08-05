@@ -270,7 +270,8 @@
           "prix_rebal": 735.0,
           "capped": false
         }
-      ]
+      ],
+      "date_label": "03 Jul. 2023"
     },
     {
       "date": "2024-07-01",
@@ -550,7 +551,8 @@
           "prix_rebal": 685.0,
           "capped": false
         }
-      ]
+      ],
+      "date_label": "01 Jul. 2024"
     },
     {
       "date": "2025-07-01",
@@ -830,7 +832,8 @@
           "prix_rebal": 660.0,
           "capped": false
         }
-      ]
+      ],
+      "date_label": "01 Jul. 2025"
     },
     {
       "date": "2026-07-01",
@@ -1110,7 +1113,8 @@
           "prix_rebal": 2400.0,
           "capped": false
         }
-      ]
+      ],
+      "date_label": "01 Jul. 2026"
     }
   ]
 }
