@@ -3607,6 +3607,7 @@ def _render_live():
                 # ── Historique iNAV par séance ────────────────────────────
                 _ih_hist = load_json(os.path.join(HALAL_DIR, "nav_intraday_history.json")) or {}
                 _past_days = sorted([d for d in _ih_hist if d != today_str], reverse=True)
+                _POS = "#16a34a"; _NEG = "#dc2626"; _MUT = "#9ca3af"
                 if _past_days:
                     _section("Historique iNAV par séance")
                     st.caption("Cliquez sur une journée pour voir le détail des tranches de 15 min.")
