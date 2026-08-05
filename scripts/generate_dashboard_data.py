@@ -100,15 +100,18 @@ n_titres_avg  = sum(n_titres_list) / len(n_titres_list) if n_titres_list else 0
 n_titres_min  = min(n_titres_list) if n_titres_list else 0
 n_titres_max  = max(n_titres_list) if n_titres_list else 0
 
-# Performance annuelle
-annual = {}
+# Performance annuelle — liste triée par année (le dashboard itère avec a.get("year"))
+annual = []
 for yr, p in vr.get("perf_by_year", {}).items():
-    annual[yr] = {
-        "etf":   p.get("etf_pct",    0) / 100,
-        "bench": p.get("indice_pct", 0) / 100,
-        "td":    p.get("td_pct",     0) / 100,
-        "te":    te_ann,
-    }
+    annual.append({
+        "year":     int(yr),
+        "etf":      p.get("etf_pct",    0) / 100,
+        "bench":    p.get("indice_pct", 0) / 100,
+        "td":       p.get("td_pct",     0) / 100,
+        "td_gross": p.get("td_pct",     0) / 100,
+        "te":       te_ann,
+    })
+annual.sort(key=lambda x: x["year"])
 
 backtest_metrics = {
     "start_label":          vr.get("backtest_start", ""),
