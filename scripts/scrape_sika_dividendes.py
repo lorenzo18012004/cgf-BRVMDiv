@@ -36,6 +36,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 import requests
 from bs4 import BeautifulSoup
 import urllib3
+import openpyxl
 urllib3.disable_warnings()
 
 from base import BaseScript
@@ -238,6 +239,9 @@ class SikaDividendesScraper(BaseScript):
                     history[ticker] = {}
                 history[ticker][yr_str] = montant
 
+        # Compléter depuis l'Excel pour les tickers/années absents de Sika
+        self._complete_from_excel(history)
+
         history_sorted = {
             t: dict(sorted(yrs.items()))
             for t, yrs in sorted(history.items())
@@ -255,6 +259,43 @@ class SikaDividendesScraper(BaseScript):
 
         n_years = max((len(v) for v in history_sorted.values()), default=0)
         print(f"  → {self.hist_file}  ({len(history_sorted)} tickers, jusqu'à {n_years} années/ticker)")
+
+    def _complete_from_excel(self, history: dict):
+        """Complète history avec les données Excel pour les tickers/années absents de Sika."""
+        excel_path = os.path.join(self.data_dir, "BRVM_Consolidated_Kendall_updated.xlsx")
+        if not os.path.exists(excel_path):
+            return
+        try:
+            wb = openpyxl.load_workbook(excel_path, read_only=True, data_only=True)
+            ws = next((wb[s] for s in wb.sheetnames if "Dividende" in s), None)
+            if ws is None:
+                return
+        except Exception as e:
+            print(f"  [WARN] Excel non lisible : {e}")
+            return
+
+        rows   = list(ws.iter_rows(values_only=True))
+        header = rows[0]
+        col    = {str(h): i for i, h in enumerate(header) if h is not None}
+        years  = [str(y) for y in range(2018, 2027) if str(y) in col]
+
+        n_added = 0
+        for row in rows[1:]:
+            tk = row[col.get("Symbol", 0)]
+            if not tk:
+                continue
+            for yr in years:
+                val = row[col[yr]] if yr in col else None
+                if not val or float(val) <= 0:
+                    continue
+                if tk not in history:
+                    history[tk] = {}
+                if not history[tk].get(yr):  # ne pas écraser Sika
+                    history[tk][yr] = float(val)
+                    n_added += 1
+
+        if n_added:
+            print(f"  → {n_added} dividendes complétés depuis Excel")
 
     def run(self):
         parser = argparse.ArgumentParser()
