@@ -1566,7 +1566,14 @@ def _render_backtest():
             return sh_tk[max(cands)]["close"] if cands else None
 
         _DV_YRS  = ["2022", "2023", "2024", "2025"]
-        _EX_DTS  = {yr: f"{int(yr)+1}-07-01" for yr in _DV_YRS}
+        # Ex-date = date réelle du rebal de l'année N+1 (évite le décalage weekend 01-juil)
+        _rebal_by_yr = {}
+        for _wd in _wh_srt:
+            _wy = _wd[:4]
+            if _wy not in _rebal_by_yr:
+                _rebal_by_yr[_wy] = _wd
+        _EX_DTS  = {yr: (_rebal_by_yr.get(str(int(yr)+1)) or f"{int(yr)+1}-07-07")
+                    for yr in _DV_YRS}
         _AUM_DV  = 5_000   # M FCFA
 
         # Calcul rendement dividende par exercice
