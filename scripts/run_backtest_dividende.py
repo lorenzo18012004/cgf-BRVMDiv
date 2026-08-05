@@ -498,6 +498,48 @@ def save_rebal_detail(rebal_log):
     print(f"rebal_detail.json écrit : {len(rebal_log)} rebalancements")
 
 
+# ── Complétion dividend_history.json depuis Excel (tickers absents de Sika) ───
+def complete_dividend_history_from_excel():
+    dh_path = os.path.join(DATA_DIR, "dividend_history.json")
+    if not os.path.exists(dh_path):
+        return
+    with open(dh_path, encoding="utf-8") as f:
+        dh = json.load(f)
+    hist = dh.get("history", {})
+
+    try:
+        wb  = openpyxl.load_workbook(EXCEL_PATH, read_only=True, data_only=True)
+        ws  = next(wb[s] for s in wb.sheetnames if "Dividende" in s)
+    except Exception as e:
+        print(f"[WARN] Excel dividendes non lisible : {e}")
+        return
+
+    rows   = list(ws.iter_rows(values_only=True))
+    header = rows[0]
+    col    = {str(h): i for i, h in enumerate(header) if h is not None}
+    years  = [str(y) for y in range(2018, 2027) if str(y) in col]
+
+    n_added = 0
+    for row in rows[1:]:
+        tk = row[col.get("Symbol", 0)]
+        if not tk:
+            continue
+        for yr in years:
+            val = row[col[yr]] if yr in col else None
+            if not val or float(val) <= 0:
+                continue
+            if tk not in hist:
+                hist[tk] = {}
+            if not hist[tk].get(yr):  # ne pas écraser les données Sika
+                hist[tk][yr] = float(val)
+                n_added += 1
+
+    dh["history"] = hist
+    with open(dh_path, "w", encoding="utf-8") as f:
+        json.dump(dh, f, ensure_ascii=False, indent=2)
+    print(f"[OK] {n_added} dividendes ajoutés depuis Excel dans dividend_history.json")
+
+
 # ── Fichiers live vides ────────────────────────────────────────────────────────
 def init_live_files():
     for path, content in [
@@ -565,6 +607,7 @@ def main():
 
     print("\n[4] Écriture fichiers...")
     init_live_files()
+    complete_dividend_history_from_excel()
     init_nav_latest(w_etf_history, sika_history, rebal_log, nav_etf, nav_idx,
                     div_yields, m_etf, m_idx)
     save_rebal_detail(rebal_log)
