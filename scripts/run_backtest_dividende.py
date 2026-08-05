@@ -73,6 +73,7 @@ def load_div_yields() -> dict:
     return result
 
 
+
 # ── Calcul ADV sur les 90 derniers jours ──────────────────────────────────────
 def compute_adv(sika_history: dict, ref_date: date) -> dict:
     adv = {}
