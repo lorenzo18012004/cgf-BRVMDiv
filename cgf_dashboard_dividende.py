@@ -4014,9 +4014,10 @@ def _render_live():
                         _pie_main = pd.concat([_top10, _autres_row], ignore_index=True)
                     else:
                         _pie_main = _top10
+                    _pie_vals = _pie_main["Val. (M FCFA)"] if _pie_main["Val. (M FCFA)"].sum() > 0 else _pie_main["Poids live (%)"]
                     fig_pie = go.Figure(go.Pie(
                         labels=_pie_main["Ticker"],
-                        values=_pie_main["Val. (M FCFA)"],
+                        values=_pie_vals,
                         hole=0.42,
                         textinfo="label+percent",
                         textfont=dict(size=13, color="#ffffff"),
