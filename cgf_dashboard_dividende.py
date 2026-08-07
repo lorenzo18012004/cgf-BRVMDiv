@@ -2445,10 +2445,10 @@ def _render_backtest():
                  "Exception : les principaux titres Dividende (par capitalisation) sont tenus via OTC quoi qu'il arrive — le stale ratio ne s'applique pas à eux.")
 
         _lx("Plafond ADV — poids maximum exécutable en N jours (titres hors top 5 OTC)",
-            r"\text{max\_w}_i = \min\!\left(\frac{20\% \times \text{ADV}_i \times N_i}{\text{AUM}},\ w_{\text{budget}}\right)",
+            r"\text{max\_w}_i = \min\!\left(\frac{15\% \times \text{ADV}_i \times N_i}{\text{AUM}},\ w_{\text{budget}}\right)",
             legend=[
                 "max_w_i = poids maximum attribuable au titre i dans le panier ADV-capped",
-                "20 % = taux de participation maximum (screen + petits blocs OTC)",
+                "15 % = taux de participation maximum (screen + petits blocs OTC)",
                 "ADV_i = volume journalier moyen du titre i sur les 63 derniers jours (en M FCFA)",
                 "N_i = 40 jours si w_i^{Dividende} ≥ 3 % (grand titre), sinon 20 jours (petit titre)",
                 "AUM = actif sous gestion de référence (M FCFA)",
