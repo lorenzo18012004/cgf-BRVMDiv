@@ -2052,6 +2052,51 @@ def _render_backtest():
             _sc_new = [s for s in sc if 'aum_mfcfa' in s]
             _sc_old = [s for s in sc if 'aum_mfcfa' not in s]
 
+            # Calcul live des deux scénarios de capping par palier AUM
+            _rp_path = os.path.join(DATA_DIR, "rebal_pending.json")
+            _sc_scratch_map  = {}
+            _sc_scaleup_map  = {}
+            _live_exclu      = []
+            if os.path.exists(_rp_path):
+                try:
+                    _rp_live        = json.load(open(_rp_path, encoding="utf-8"))
+                    _bsk_items      = _rp_live.get("new_basket") or _rp_live.get("basket", [])
+                    _live_exclu     = sorted((_rp_live.get("excluded") or {}).keys())
+                    _actual_aum_rp  = float(_rp_live.get("aum_mfcfa", 5000))
+                    _actual_caps_rp = sorted(_rp_live.get("capped_tickers", []))
+                    _bsk_map        = {it["ticker"]: it for it in _bsk_items if not it.get("force_otc")}
+                    for _s in _sc_new:
+                        _aum = _s.get("aum_mfcfa", 0)
+                        _scratch = []
+                        for tk, _it in _bsk_map.items():
+                            _w_b30 = _it.get("w_brvm30", 0)
+                            _adv   = _it.get("adv_mfcfa", 0)
+                            _n     = 40 if _w_b30 >= 0.03 else 20
+                            if _w_b30 > (0.15 * _adv * _n / _aum if _aum > 0 else 0) + 1e-6:
+                                _scratch.append(tk)
+                        _sc_scratch_map[_aum] = sorted(_scratch)
+                        _delta = _aum - _actual_aum_rp
+                        if _delta <= 0:
+                            _sc_scaleup_map[_aum] = _actual_caps_rp
+                        else:
+                            _scaleup = []
+                            for tk, _it in _bsk_map.items():
+                                _w_b30 = _it.get("w_brvm30", 0)
+                                _adv   = _it.get("adv_mfcfa", 0)
+                                _n     = 40 if _w_b30 >= 0.03 else 20
+                                if _w_b30 * _delta > 0.15 * _adv * _n + 1e-6:
+                                    _scaleup.append(tk)
+                            _sc_scaleup_map[_aum] = sorted(_scaleup)
+                    _sc_new = [dict(_s, **{
+                        "n_capped_avg": float(len(_sc_scaleup_map.get(_s.get("aum_mfcfa", 0), []))),
+                        "n_exclu_avg":  float(len(_live_exclu)),
+                        "top_capped":   [{"ticker": tk, "freq": 1.0}
+                                         for tk in _sc_scaleup_map.get(_s.get("aum_mfcfa", 0), [])],
+                        "top_exclu":    [{"ticker": tk, "freq": 1.0} for tk in _live_exclu],
+                    }) for _s in _sc_new]
+                except Exception:
+                    pass
+
             if _sc_new:
                 df_s = pd.DataFrame(_sc_new)
                 _labels = df_s['label'].tolist()
@@ -2075,6 +2120,16 @@ def _render_backtest():
                 _mc4.metric("Plafonnés max (avg)", f"{_capped_max:.1f} titres")
 
                 st.markdown("---")
+
+                # Sélecteur de scénario commun aux deux graphiques et à la heatmap
+                _heat_mode = st.radio(
+                    "Scénario de plafonnement :",
+                    ["Scale-up depuis panier actuel", "Construction from scratch"],
+                    horizontal=True, key="sc_heat_mode",
+                )
+                _use_scratch   = (_heat_mode == "Construction from scratch")
+                _cap_map_used  = _sc_scratch_map if _use_scratch else _sc_scaleup_map
+                _n_capped_live = [len(_cap_map_used.get(_a, [])) for _a in _aums]
 
                 # ── Graphiques ──────────────────────────────────────────────
                 _gc1, _gc2 = st.columns(2)
@@ -2110,20 +2165,21 @@ def _render_backtest():
                     st.plotly_chart(fig_te, width='stretch')
 
                 with _gc2:
+                    _n_exclu_live = [len(_live_exclu)] * len(_labels)
                     fig_cap = go.Figure()
                     fig_cap.add_trace(go.Bar(
-                        x=_labels, y=df_s["n_capped_avg"],
+                        x=_labels, y=_n_capped_live,
                         marker_color="#4a7fa5", opacity=0.85,
-                        text=[f"{v:.1f}" for v in df_s["n_capped_avg"]],
+                        text=[f"{v:.0f}" for v in _n_capped_live],
                         textposition="outside", name="Plafonnés"))
                     fig_cap.add_trace(go.Bar(
-                        x=_labels, y=df_s["n_exclu_avg"],
+                        x=_labels, y=_n_exclu_live,
                         marker_color="#c0392b", opacity=0.75,
-                        text=[f"{v:.1f}" for v in df_s["n_exclu_avg"]],
+                        text=[f"{v:.0f}" if v > 0 else "" for v in _n_exclu_live],
                         textposition="outside", name="Exclus"))
                     fig_cap.update_layout(
                         **PLOTLY_LAYOUT, height=380,
-                        title="Titres plafonnés & exclus (moy. par trimestre)",
+                        title="Titres plafonnés & exclus (ADV actuel)",
                         barmode="stack", yaxis_title="Nb titres",
                         legend=dict(orientation="h", y=-0.25),
                         xaxis_tickangle=-30,
@@ -2146,36 +2202,41 @@ def _render_backtest():
                 df_tbl['n_exclu_avg']  = df_tbl['n_exclu_avg'].map(lambda v: f"{v:.1f}")
                 df_tbl['coverage_avg'] = df_tbl['coverage_avg'].map(lambda v: f"{v*100:.1f}%")
                 df_tbl.columns = ['AUM', 'TE', 'TD', 'Turnover', 'Coût tx/an',
-                                   'Titres moy.', 'Plafonnés moy.', 'Exclus moy.', 'Couverture']
+                                   'Titres moy.', 'Plafonnés (live)', 'Exclus (live)', 'Couverture']
                 st.dataframe(df_tbl, width='stretch', hide_index=True)
 
                 # ── Titres goulots d'étranglement ───────────────────────────
                 st.markdown("---")
                 _section("Titres goulots — lesquels bloquent en premier")
 
-                # Construire matrice ticker × AUM (fréquence de plafonnement)
                 _all_tickers_cap = sorted(set(
-                    r['ticker'] for s in _sc_new for r in s.get('top_capped', [])
+                    tk for tks in _cap_map_used.values() for tk in tks
                 ))
                 if _all_tickers_cap:
                     _heatmap_data = []
-                    for s in _sc_new:
-                        _freq_map = {r['ticker']: r['freq'] for r in s.get('top_capped', [])}
-                        _heatmap_data.append([_freq_map.get(tk, 0) for tk in _all_tickers_cap])
-
+                    for _s in _sc_new:
+                        _aum = _s.get("aum_mfcfa", 0)
+                        _capped_set = set(_cap_map_used.get(_aum, []))
+                        _heatmap_data.append([1.0 if tk in _capped_set else 0.0
+                                               for tk in _all_tickers_cap])
+                    _heat_title = (
+                        "Construction from scratch — titres impossibles à atteindre en N jours"
+                        if _use_scratch else
+                        "Scale-up depuis panier actuel — nouveaux goulots si l'AUM augmente"
+                    )
                     fig_heat = go.Figure(go.Heatmap(
                         z=_heatmap_data,
                         x=_all_tickers_cap,
                         y=_labels,
-                        colorscale=[[0, '#f7f5f0'], [0.33, '#c9861a'], [1.0, '#c0392b']],
+                        colorscale=[[0, '#f7f5f0'], [0.5, '#c9861a'], [1.0, '#c0392b']],
                         zmin=0, zmax=1,
-                        text=[[f"{v:.0%}" if v > 0 else "" for v in row] for row in _heatmap_data],
+                        text=[["Capé" if v > 0 else "" for v in row] for row in _heatmap_data],
                         texttemplate="%{text}",
-                        colorbar=dict(title="Fréq. plaf.", tickformat=".0%"),
+                        showscale=False,
                     ))
                     fig_heat.update_layout(
                         **PLOTLY_LAYOUT, height=320,
-                        title="Fréquence de plafonnement par titre et par AUM",
+                        title=_heat_title,
                         xaxis_title="Ticker", yaxis_title="AUM",
                     )
                     st.plotly_chart(fig_heat, width='stretch')
