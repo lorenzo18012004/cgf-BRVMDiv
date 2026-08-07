@@ -56,18 +56,34 @@ jobs:
         run: pip install -r requirements/requirements_cloud.txt
 
       - name: Calculer iNAV
+        id: calc_inav
         if: steps.check_hours.outputs.market_open == 'true'
+        continue-on-error: true
         run: python scripts/scrape_intraday_cloud.py
       - name: Mettre a jour NAV quotidienne
-        if: steps.check_hours.outputs.market_open == 'true'
+        if: steps.check_hours.outputs.market_open == 'true' && steps.calc_inav.outcome == 'success'
         run: python scripts/calc_nav_cloud.py
 
+      - name: Tracker les echecs iNAV
+        if: steps.check_hours.outputs.market_open == 'true'
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python scripts/track_inav_failure.py "${{ steps.calc_inav.outcome }}"
 
       - name: Commit et push (PAT pour declencher boucle)
-        if: steps.check_hours.outputs.market_open == 'true'
+        if: steps.check_hours.outputs.market_open == 'true' && steps.calc_inav.outcome == 'success'
         run: |
           git config user.name "cgf-bot"
           git config user.email "bot@cgf-bourse.ci"
-          git add data/intraday_nav.json data/nav_intraday_history.json data/launch_state.json data/nav_latest.json
+          git add data/intraday_nav.json data/nav_intraday_history.json data/launch_state.json data/nav_latest.json data/intraday_failure_count.json
           git diff --staged --quiet || git commit -m "iNAV ETFDividende: snapshot $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull --rebase origin main && git push || true
+
+      - name: Commit echec iNAV
+        if: steps.check_hours.outputs.market_open == 'true' && steps.calc_inav.outcome != 'success'
+        run: |
+          git config user.name "cgf-bot"
+          git config user.email "bot@cgf-bourse.ci"
+          git add data/intraday_failure_count.json
+          git diff --staged --quiet || { git pull --rebase origin main && git commit -m "iNAV: echec $(date -u +'%Y-%m-%d %H:%M') UTC" && git push || true; }
