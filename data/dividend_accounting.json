@@ -1,0 +1,31 @@
+{
+  "updated_at": "2026-08-12T16:56:56.703678+00:00",
+  "dividend_receivable_fcfa": 38262399.0,
+  "distribution_payable_fcfa": 38262399.0,
+  "poche_distribution_fcfa": 0.0,
+  "evenements": [
+    {
+      "id": "SDSC_2026-08-12",
+      "ticker": "SDSC",
+      "nom": "SITAB",
+      "ex_date": "2026-08-12",
+      "montant_par_action_fcfa": 1707.2,
+      "nb_titres_etf": 22412.0,
+      "montant_total_fcfa": 38262399.0,
+      "montant_par_part_fcfa": 1530.496,
+      "payment_date": null,
+      "distribution_date": "N/A",
+      "status": "accrued",
+      "journal": [
+        {
+          "date": "2026-08-12",
+          "type": "ACCRUAL",
+          "debit": "Dividend_Receivable",
+          "credit": "Distribution_Payable",
+          "montant_fcfa": 38262399.0,
+          "note": "Provisionnement ex-date SDSC — 1707.20 FCFA/action"
+        }
+      ]
+    }
+  ]
+}
