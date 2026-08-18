@@ -6711,6 +6711,16 @@
       "change_day_pct": 0.892,
       "aum_mfcfa": 2622.0,
       "n_prices": 30
+    },
+    {
+      "time": "14:39",
+      "vl": 104878.0,
+      "nav_indice": 280.0449,
+      "perf_since_launch": 4.8784,
+      "change_1d_pct": 0.945,
+      "change_day_pct": 0.892,
+      "aum_mfcfa": 2622.0,
+      "n_prices": 30
     }
   ]
 }
