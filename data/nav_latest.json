@@ -1,13 +1,13 @@
 {
   "etf_name": "CGF ETF Dividende BRVM",
-  "calc_date": "2026-08-31",
+  "calc_date": "2026-09-01",
   "launched": true,
-  "nav_indice": 292.2691,
-  "vl_par_part_fcfa": 109456.0,
-  "aum_mfcfa": 2736.4,
+  "nav_indice": 292.2621,
+  "vl_par_part_fcfa": 109454.0,
+  "aum_mfcfa": 2736.3,
   "n_parts": 25000,
-  "perf_since_launch": 9.4564,
-  "change_day_pct": -0.1288,
+  "perf_since_launch": 9.4538,
+  "change_day_pct": -0.0,
   "last_rebal_date": "2026-07-29",
   "nav_live_series": [
     [
@@ -89,6 +89,10 @@
     [
       "2026-08-31",
       109456.0
+    ],
+    [
+      "2026-09-01",
+      109454.0
     ]
   ],
   "nav_indice_reference": 301.9913,
@@ -3295,7 +3299,7 @@
       "dernier_prix": 8800.0,
       "prix_rebal": 5900.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 210.9,
       "prix_stale": false,
       "force_otc": false
@@ -3309,7 +3313,7 @@
       "dernier_prix": 12295.0,
       "prix_rebal": 9395.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 175.3,
       "prix_stale": false,
       "force_otc": false
@@ -3323,7 +3327,7 @@
       "dernier_prix": 5480.0,
       "prix_rebal": 4190.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 150.9,
       "prix_stale": false,
       "force_otc": false
@@ -3337,7 +3341,7 @@
       "dernier_prix": 10235.0,
       "prix_rebal": 9025.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 158.9,
       "prix_stale": false,
       "force_otc": false
@@ -3351,8 +3355,8 @@
       "dernier_prix": 2155.0,
       "prix_rebal": 2000.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
-      "pv_mfcfa": 136.6,
+      "last_price_date": "2026-09-01",
+      "pv_mfcfa": 136.5,
       "prix_stale": false,
       "force_otc": false
     },
@@ -3365,7 +3369,7 @@
       "dernier_prix": 9000.0,
       "prix_rebal": 9015.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 114.1,
       "prix_stale": false,
       "force_otc": false
@@ -3379,7 +3383,7 @@
       "dernier_prix": 6480.0,
       "prix_rebal": 4970.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 117.7,
       "prix_stale": false,
       "force_otc": false
@@ -3393,7 +3397,7 @@
       "dernier_prix": 8295.0,
       "prix_rebal": 7440.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 95.5,
       "prix_stale": false,
       "force_otc": false
@@ -3407,7 +3411,7 @@
       "dernier_prix": 9395.0,
       "prix_rebal": 8730.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 84.4,
       "prix_stale": false,
       "force_otc": false
@@ -3421,7 +3425,7 @@
       "dernier_prix": 2890.0,
       "prix_rebal": 2800.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 80.5,
       "prix_stale": false,
       "force_otc": false
@@ -3435,7 +3439,7 @@
       "dernier_prix": 22500.0,
       "prix_rebal": 24450.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 75.9,
       "prix_stale": false,
       "force_otc": false
@@ -3449,7 +3453,7 @@
       "dernier_prix": 8250.0,
       "prix_rebal": 8395.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 73.2,
       "prix_stale": false,
       "force_otc": false
@@ -3463,7 +3467,7 @@
       "dernier_prix": 22995.0,
       "prix_rebal": 19995.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 71.1,
       "prix_stale": false,
       "force_otc": false
@@ -3477,7 +3481,7 @@
       "dernier_prix": 16510.0,
       "prix_rebal": 16250.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 73.4,
       "prix_stale": false,
       "force_otc": false
@@ -3491,7 +3495,7 @@
       "dernier_prix": 36600.0,
       "prix_rebal": 29300.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 84.1,
       "prix_stale": false,
       "force_otc": false
@@ -3505,7 +3509,7 @@
       "dernier_prix": 16750.0,
       "prix_rebal": 15990.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 70.8,
       "prix_stale": false,
       "force_otc": false
@@ -3519,7 +3523,7 @@
       "dernier_prix": 3800.0,
       "prix_rebal": 4000.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 69.4,
       "prix_stale": false,
       "force_otc": false
@@ -3533,7 +3537,7 @@
       "dernier_prix": 6690.0,
       "prix_rebal": 5300.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 82.7,
       "prix_stale": false,
       "force_otc": false
@@ -3547,7 +3551,7 @@
       "dernier_prix": 3375.0,
       "prix_rebal": 2950.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 74.4,
       "prix_stale": false,
       "force_otc": false
@@ -3561,7 +3565,7 @@
       "dernier_prix": 12995.0,
       "prix_rebal": 12100.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 71.5,
       "prix_stale": false,
       "force_otc": false
@@ -3575,7 +3579,7 @@
       "dernier_prix": 2990.0,
       "prix_rebal": 2275.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 83.2,
       "prix_stale": false,
       "force_otc": false
@@ -3589,7 +3593,7 @@
       "dernier_prix": 29630.0,
       "prix_rebal": 24000.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 68.9,
       "prix_stale": false,
       "force_otc": false
@@ -3603,7 +3607,7 @@
       "dernier_prix": 38000.0,
       "prix_rebal": 39000.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 62.7,
       "prix_stale": false,
       "force_otc": false
@@ -3617,7 +3621,7 @@
       "dernier_prix": 3800.0,
       "prix_rebal": 3285.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 76.1,
       "prix_stale": false,
       "force_otc": false
@@ -3631,7 +3635,7 @@
       "dernier_prix": 4435.0,
       "prix_rebal": 4600.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 59.8,
       "prix_stale": false,
       "force_otc": false
@@ -3645,7 +3649,7 @@
       "dernier_prix": 3495.0,
       "prix_rebal": 4190.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 57.2,
       "prix_stale": false,
       "force_otc": false
@@ -3659,7 +3663,7 @@
       "dernier_prix": 2800.0,
       "prix_rebal": 2400.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 62.7,
       "prix_stale": false,
       "force_otc": false
@@ -3673,7 +3677,7 @@
       "dernier_prix": 17200.0,
       "prix_rebal": 17540.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 61.8,
       "prix_stale": false,
       "force_otc": false
@@ -3687,7 +3691,7 @@
       "dernier_prix": 21005.0,
       "prix_rebal": 16700.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 70.5,
       "prix_stale": false,
       "force_otc": false
@@ -3701,7 +3705,7 @@
       "dernier_prix": 2425.0,
       "prix_rebal": 2190.0,
       "capped": false,
-      "last_price_date": "2026-08-31",
+      "last_price_date": "2026-09-01",
       "pv_mfcfa": 62.0,
       "prix_stale": false,
       "force_otc": false
