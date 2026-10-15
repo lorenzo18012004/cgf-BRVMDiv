@@ -12800,5 +12800,17 @@
       "aum_mfcfa": 2555.5,
       "n_prices": 30
     }
+  ],
+  "2026-10-15": [
+    {
+      "time": "14:20",
+      "vl": 101956.0,
+      "nav_indice": 272.2411,
+      "perf_since_launch": 1.9558,
+      "change_1d_pct": -0.5508,
+      "change_day_pct": 0.0,
+      "aum_mfcfa": 2548.9,
+      "n_prices": 30
+    }
   ]
 }
