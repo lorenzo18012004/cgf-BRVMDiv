@@ -13390,5 +13390,17 @@
       "aum_mfcfa": 2472.9,
       "n_prices": 30
     }
+  ],
+  "2026-10-23": [
+    {
+      "time": "14:24",
+      "vl": 99371.0,
+      "nav_indice": 265.3385,
+      "perf_since_launch": -0.6293,
+      "change_1d_pct": 0.1389,
+      "change_day_pct": 0.0,
+      "aum_mfcfa": 2484.3,
+      "n_prices": 30
+    }
   ]
 }
